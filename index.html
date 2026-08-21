@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Video Quiz (With Explanation)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --jade-deep: #2D8B6F;
+            --jade-dark: #14432F;
+            --accent: #E8A24A;
+            --correct: #2D8B6F;
+            --wrong: #C15F3C;
+            --white: #FFFFFF;
+            --cream: #FAF7F0;
+            --ink: #1A1A1A;
+            --radius-lg: 22px;
+            --radius: 14px;
+        }
+
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: #111;
+            color: var(--white);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            background: #000;
+        }
+
+        video {
+            width: 100%;
+            display: block;
+        }
+
+        /* Thanh điều khiển tùy chỉnh (Custom Controls) */
+        .custom-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            display: none;
+            align-items: center;
+            padding: 15px 20px;
+            box-sizing: border-box;
+            gap: 15px;
+            z-index: 5;
+            transition: opacity 0.3s;
+        }
+
+        .play-pause-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+        }
+
+        .play-pause-btn:hover {
+            color: var(--jade-deep);
+        }
+
+        .seek-bar {
+            flex-grow: 1;
+            -webkit-appearance: none;
+            background: rgba(255, 255, 255, 0.3);
+            height: 6px;
+            border-radius: 3px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .seek-bar::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--jade-deep);
+            cursor: pointer;
+        }
+
+        /* Lớp phủ Quiz hiện lên khi hết video */
+        .quiz-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(5px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .quiz-card {
+            background: var(--cream);
+            color: var(--ink);
+            padding: 24px;
+            border-radius: var(--radius-lg);
+            width: 80%;
+            max-width: 420px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            max-height: 90%;
+            overflow-y: auto;
+        }
+
+        .quiz-card h3 {
+            color: var(--jade-dark);
+            margin-top: 0;
+            font-size: 22px;
+        }
+
+        .quiz-card p {
+            font-size: 16px;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .quiz-opt {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            margin-bottom: 12px;
+            background: var(--white);
+            border: 2px solid #D6CCB6;
+            border-radius: var(--radius);
+            font-size: 15px;
+            font-family: inherit;
+            font-weight: 600;
+            color: var(--ink);
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: left;
+        }
+
+        .quiz-opt:hover {
+            border-color: var(--jade-deep);
+            background: #DCEAE1;
+        }
+
+        .quiz-opt.correct {
+            background: var(--correct);
+            color: var(--white);
+            border-color: var(--correct);
+        }
+
+        .quiz-opt.wrong {
+            background: var(--wrong);
+            color: var(--white);
+            border-color: var(--wrong);
+        }
+
+        /* Hộp giải thích (ẩn mặc định) */
+        .explanation-box {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #E8F3EF;
+            border-radius: 12px;
+            color: var(--jade-dark);
+            font-size: 14.5px;
+            text-align: left;
+            border-left: 4px solid var(--jade-deep);
+            animation: fadeIn 0.5s ease;
+            line-height: 1.5;
+        }
+
+        .continue-btn {
+            margin-top: 15px;
+            background-color: var(--jade-deep);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: var(--radius);
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+        }
+
+        .continue-btn:hover {
+            background-color: var(--jade-dark);
+        }
+
+        .start-btn {
+            background-color: var(--jade-deep);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: var(--radius);
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 6;
+        }
+
+        /* Thông báo sau khi trả lời xong */
+        .lesson-transition {
+            display: none;
+            text-align: center;
+            margin-top: 30px;
+            animation: fadeIn 1s ease;
+        }
+
+        .lesson-transition h2 {
+            color: var(--jade-deep);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="video-container" id="videoContainer">
+        <button class="start-btn" id="btnStart" onclick="startExperience()">▶ Bắt đầu Video</button>
+
+        <video id="myVideo" src="Cảnh_ban_đầu_-_2026-08-21_202608210939.mp4" muted playsinline></video>
+        <audio id="myAudio" src="Ghost of Kyoto (Japanese Epic Trailer).mp3"></audio>
+
+        <!-- Thanh điều khiển Custom -->
+        <div class="custom-controls" id="customControls">
+            <button class="play-pause-btn" id="playPauseBtn" onclick="togglePlayPause()">⏸</button>
+            <input type="range" class="seek-bar" id="seekBar" value="0" min="0" max="100">
+        </div>
+
+        <div class="quiz-overlay" id="quizOverlay">
+            <div class="quiz-card">
+                <h3>Interactive Quiz 💡</h3>
+                <p>"How many traditional festivals did you spot in this video?"</p>
+
+                <div id="optionsContainer">
+                    <!-- Đáp án đúng là 2 lễ hội (Songkran Thái Lan và Hoa Anh Đào Nhật Bản) -->
+                    <button class="quiz-opt" onclick="answerQuiz(this, true)">A. 2 festivals</button>
+                    <button class="quiz-opt" onclick="answerQuiz(this, false)">B. 3 festivals</button>
+                    <button class="quiz-opt" onclick="answerQuiz(this, false)">C. 4 or more festivals</button>
+                </div>
+
+                <!-- Hộp giải thích (Hiện ra sau khi click) -->
+                <div class="explanation-box" id="explanationBox">
+                    <strong>Giải thích:</strong> Video đã giới thiệu <strong>2 lễ hội</strong> truyền thống đặc sắc:
+                    <ul style="margin: 8px 0; padding-left: 20px;">
+                        <li><strong>Lễ hội Songkran</strong> (Lễ hội té nước tưng bừng của Thái Lan).</li>
+                        <li><strong>Lễ hội Hanami</strong> (Truyền thống ngắm hoa anh đào thanh bình của Nhật Bản).</li>
+                    </ul>
+                    <button class="continue-btn" onclick="continueToLesson()">Tiếp tục bài học ➔</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="lesson-transition" id="lessonUI">
+        <h2>Welcome to Unit 2: A Multicultural World!</h2>
+        <p>Nội dung bài học chính sẽ được tự động mở ra ở đây...</p>
+    </div>
+
+    <script>
+        const video = document.getElementById('myVideo');
+        const audio = document.getElementById('myAudio');
+        const btnStart = document.getElementById('btnStart');
+        const customControls = document.getElementById('customControls');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const seekBar = document.getElementById('seekBar');
+        const quizOverlay = document.getElementById('quizOverlay');
+        const explanationBox = document.getElementById('explanationBox');
+        const lessonUI = document.getElementById('lessonUI');
+
+        function startExperience() {
+            btnStart.style.display = 'none';
+            customControls.style.display = 'flex';
+            audio.currentTime = 32.8;
+            video.currentTime = 0;
+
+            video.play();
+            audio.play();
+            playPauseBtn.innerHTML = '⏸';
+        }
+
+        function togglePlayPause() {
+            if (video.paused) {
+                video.play();
+                audio.play();
+                playPauseBtn.innerHTML = '⏸';
+            } else {
+                video.pause();
+                audio.pause();
+                playPauseBtn.innerHTML = '▶';
+            }
+        }
+
+        video.addEventListener('timeupdate', () => {
+            if (video.duration) {
+                const value = (100 / video.duration) * video.currentTime;
+                seekBar.value = value;
+            }
+        });
+
+        seekBar.addEventListener('input', () => {
+            const newVideoTime = video.duration * (seekBar.value / 100);
+            video.currentTime = newVideoTime;
+            audio.currentTime = newVideoTime + 32.8;
+        });
+
+        video.addEventListener('ended', () => {
+            quizOverlay.style.display = 'flex';
+            customControls.style.display = 'none';
+            playPauseBtn.innerHTML = '▶';
+        });
+
+        function answerQuiz(btnElement, isCorrect) {
+            // 1. Đổi màu nút
+            if (isCorrect) {
+                btnElement.classList.add('correct');
+                btnElement.innerHTML += ' ✓ (Chính xác)';
+            } else {
+                btnElement.classList.add('wrong');
+                btnElement.innerHTML += ' ✗ (Chưa đúng)';
+
+                // Tự động highlight đáp án đúng (Nút A)
+                const correctBtn = document.querySelector('.quiz-opt[onclick*="true"]');
+                if (correctBtn) {
+                    correctBtn.classList.add('correct');
+                    correctBtn.innerHTML += ' ✓';
+                }
+            }
+
+            // 2. Vô hiệu hóa các nút
+            const allBtns = document.querySelectorAll('.quiz-opt');
+            allBtns.forEach(b => b.style.pointerEvents = 'none');
+
+            // 3. Hiện hộp giải thích sau 0.5s để học sinh đọc, nhạc vẫn tiếp tục chạy
+            setTimeout(() => {
+                explanationBox.style.display = 'block';
+            }, 500);
+        }
+
+        // Chuyển sang bài học khi học sinh bấm "Tiếp tục"
+        function continueToLesson() {
+            document.getElementById('videoContainer').style.display = 'none';
+            lessonUI.style.display = 'block';
+
+            // Fade out nhạc nền êm ái
+            let vol = 1;
+            const fadeAudio = setInterval(() => {
+                if (vol > 0.05) {
+                    vol -= 0.05;
+                    audio.volume = vol;
+                } else {
+                    clearInterval(fadeAudio);
+                    audio.pause();
+                }
+            }, 100);
+        }
+    </script>
+</body>
+
+</html>
