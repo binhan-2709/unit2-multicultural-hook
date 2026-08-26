@@ -1,0 +1,3484 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 2 — Getting Started: A Multicultural World</title>
+  <meta name="description"
+    content="Unit 2 Getting Started — A Multicultural World. Learn words related to cultural diversity through Hà's social media post about an international festival and Khoa's comments, then practise articles.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ===== DESIGN TOKENS ===== */
+    :root {
+      --cream: #FAF7F0;
+      --cream-2: #F0EADD;
+      --cream-3: #E7DECC;
+      --paper-line: #E5DECF;
+      --paper-line-2: #D6CCB6;
+      --ink: #1A1A1A;
+      --ink-2: #514C44;
+      --ink-3: #7C756A;
+      --ink-faint: #ABA396;
+      --jade: #3CA57A;
+      --jade-deep: #2D8B6F;
+      --jade-dark: #14432F;
+      --jade-text: #1B5E48;
+      --jade-soft: #A9D0BE;
+      --jade-pale: #DCEAE1;
+      --sage: #A8C9B8;
+      --sage-deep: #7CA792;
+      --sage-text: #46685A;
+      --sage-pale: #E1ECE4;
+      --accent: #E8A24A;
+      --accent-deep: #CE8A33;
+      --accent-text: #8A551A;
+      --accent-pale: #F7E7CD;
+      --correct: #2D8B6F;
+      --correct-bg: #DCEAE1;
+      --wrong: #C15F3C;
+      --wrong-bg: #F3E2D6;
+      --warning: #C58A2E;
+      --warning-bg: #F5E7CB;
+      --info: #4E7F92;
+      --info-bg: #DCE7EB;
+      --white: #FFFFFF;
+      --radius-lg: 28px;
+      --radius: 20px;
+      --radius-sm: 12px;
+      --shadow: 0 10px 30px rgba(43, 43, 40, .10);
+      --shadow-sm: 0 4px 14px rgba(43, 43, 40, .08);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', 'Be Vietnam Pro', -apple-system, sans-serif;
+      font-size: 16.5px;
+      line-height: 1.65;
+      color: var(--ink);
+      background-color: var(--cream);
+      background-image:
+        radial-gradient(at 0% 0%, rgba(60, 165, 122, 0.08) 0px, transparent 50%),
+        radial-gradient(at 100% 20%, rgba(232, 162, 74, 0.08) 0px, transparent 45%),
+        radial-gradient(at 50% 60%, rgba(67, 97, 238, 0.04) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, rgba(45, 139, 111, 0.06) 0px, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .eyebrow,
+    .section-eyebrow,
+    .step-header-title {
+      font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    /* ===== KEYFRAMES ===== */
+    @keyframes fadein {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes popIn {
+      0% {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.03);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes wrong-shake {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      20%,
+      60% {
+        transform: translateX(-6px);
+      }
+
+      40%,
+      80% {
+        transform: translateX(6px);
+      }
+    }
+
+    .wrong-shake {
+      animation: wrong-shake .4s ease-in-out;
+    }
+
+    /* ===== LAYOUT ===== */
+    .main-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px 100px;
+    }
+
+    /* Progress Tracker Sidebar & Toggle */
+    /* DESKTOP (Default): Top-right pill button */
+    .pt-toggle-btn {
+      position: fixed;
+      right: 20px;
+      top: 20px;
+      z-index: 1000;
+      background: linear-gradient(135deg, var(--jade-dark), var(--jade-deep));
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 10px 18px;
+      border-radius: 999px;
+      box-shadow: 0 8px 24px rgba(20, 67, 47, 0.25);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 13.5px;
+      cursor: pointer;
+      transition: all .2s ease;
+      user-select: none;
+    }
+
+    .pt-toggle-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(20, 67, 47, 0.35);
+      background: linear-gradient(135deg, #18523a, var(--jade-deep));
+    }
+
+    .pt-toggle-btn .pt-tab-icon {
+      font-size: 15px;
+      line-height: 1;
+    }
+
+    .pt-toggle-btn .pt-tab-label {
+      font-size: 13.5px;
+      font-weight: 700;
+      letter-spacing: normal;
+    }
+
+    .pt-toggle-btn #ptBtnPct {
+      background: var(--accent);
+      color: var(--accent-text);
+      padding: 2px 7px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 900;
+    }
+
+    .pt-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s;
+      backdrop-filter: blur(4px);
+    }
+
+    .pt-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Desktop Sidebar Drawer */
+    .progress-tracker {
+      position: fixed;
+      right: -340px;
+      top: 0;
+      bottom: 0;
+      width: 300px;
+      background: var(--white);
+      z-index: 1000;
+      box-shadow: var(--shadow);
+      padding: 30px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      transition: right .35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .progress-tracker.open {
+      right: 0;
+    }
+
+    /* MOBILE (< 768px): Compact floating side-tab docked on right edge */
+    @media (max-width: 768px) {
+      .pt-toggle-btn {
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        border-radius: 16px 0 0 16px;
+        border-right: none;
+        padding: 8px 6px 8px 10px;
+        flex-direction: column;
+        gap: 4px;
+        box-shadow: -4px 6px 18px rgba(20, 67, 47, 0.35);
+      }
+
+      .pt-toggle-btn:hover {
+        transform: translateY(-50%) translateX(-3px);
+      }
+
+      .pt-toggle-btn .pt-tab-label {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .pt-toggle-btn #ptBtnPct {
+        padding: 1px 4px;
+        font-size: 10px;
+      }
+
+      .progress-tracker {
+        top: 50%;
+        bottom: auto;
+        transform: translateY(-50%);
+        max-height: 85vh;
+        width: min(300px, calc(100vw - 32px));
+        border-radius: 20px 0 0 20px;
+        box-shadow: -10px 10px 35px rgba(0, 0, 0, 0.25);
+        padding: 22px 18px;
+        gap: 16px;
+        overflow-y: auto;
+      }
+    }
+
+    .pt-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--cream-2);
+      padding-bottom: 14px;
+    }
+
+    .pt-header h3 {
+      margin: 0;
+      font-size: 20px;
+      color: var(--jade-dark);
+      font-weight: 800;
+    }
+
+    .pt-close {
+      background: transparent;
+      border: none;
+      font-size: 24px;
+      color: var(--ink-3);
+      line-height: 1;
+    }
+
+    .pt-progress-box {
+      background: var(--cream);
+      border: 1.5px solid var(--paper-line);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .pt-label-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--ink-2);
+      margin-bottom: 8px;
+    }
+
+    .pt-bar-track {
+      height: 8px;
+      background: var(--cream-3);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .pt-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--jade), var(--jade-deep));
+      width: 0%;
+      border-radius: 999px;
+      transition: width .3s ease;
+    }
+
+    .pt-items {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      overflow-y: auto;
+    }
+
+    .pt-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink-2);
+      transition: all .2s;
+      border: 1.5px solid transparent;
+    }
+
+    .pt-item:hover {
+      background: var(--cream);
+      border-color: var(--paper-line);
+      color: var(--ink);
+    }
+
+    .pt-box {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      border: 2px solid var(--ink-faint);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: transparent;
+      font-size: 11px;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .pt-item.done .pt-box {
+      background: var(--jade-deep);
+      border-color: var(--jade-deep);
+      color: #fff;
+    }
+
+    .pt-item.done span {
+      color: var(--jade-text);
+      text-decoration: line-through;
+    }
+
+    /* Hero Header */
+    .hero {
+      background: linear-gradient(135deg, var(--jade-dark), #1c4e3a);
+      color: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 50px 40px;
+      margin-bottom: 40px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      animation: popIn .6s cubic-bezier(.2, .8, .3, 1);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 4vw, 42px);
+      margin: 0 0 16px;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .hero .accent-line {
+      display: block;
+      color: var(--accent);
+      background: linear-gradient(135deg, var(--accent), #fcd34d);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p.sub {
+      font-size: clamp(15px, 2vw, 17.5px);
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 700px;
+      margin: 0 auto 30px;
+      font-weight: 500;
+    }
+
+    .hero-obj-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .hero-obj-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1.5px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      text-align: left;
+      flex: 0 1 320px;
+    }
+
+    .obj-num {
+      width: 24px;
+      height: 24px;
+      background: var(--accent);
+      color: var(--accent-text);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .obj-title-en {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .accept-btn {
+      background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+      color: var(--white);
+      border: none;
+      padding: 14px 34px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 16.5px;
+      box-shadow: 0 6px 20px rgba(232, 162, 74, 0.4);
+      transition: all .2s;
+      animation: pulse 2s infinite;
+    }
+
+    .accept-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(232, 162, 74, 0.5);
+    }
+
+    /* Blocks (Sections) & Locks */
+    .block {
+      background: var(--white);
+      border: 2px solid var(--cream-2);
+      border-radius: var(--radius);
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: var(--shadow);
+      position: relative;
+      animation: fadein .4s ease;
+    }
+
+    .section-locked {
+      min-height: 200px;
+    }
+
+    .lock-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(250, 247, 240, 0.96);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .lock-badge {
+      background: var(--cream-2);
+      border: 1.5px solid var(--paper-line);
+      color: var(--ink-2);
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14.5px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .section-eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 900;
+      color: var(--accent-text);
+      background: var(--accent-pale);
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    .block h2 {
+      margin: 0 0 16px;
+      font-size: 24px;
+      color: var(--jade-dark);
+      font-weight: 850;
+    }
+
+    /* Common Components */
+    .chip-btn {
+      background: var(--jade-deep);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 10px 24px;
+      font-size: 14px;
+      font-weight: 800;
+      transition: all .2s;
+    }
+
+    .chip-btn:hover:not(:disabled) {
+      background: var(--jade-dark);
+      transform: translateY(-1px);
+    }
+
+    .chip-btn.ghost {
+      background: transparent;
+      border: 2px solid var(--sage);
+      color: var(--jade-text);
+    }
+
+    .chip-btn.ghost:hover {
+      background: var(--jade-pale);
+    }
+
+    .chip-btn:disabled {
+      background: var(--ink-faint);
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* ===== SOCIAL MEDIA POST + COMMENT THREAD ===== */
+    .audio-player-wrapper {
+      background: var(--white);
+      border: 2px solid var(--cream-2);
+      box-shadow: var(--shadow-sm);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .ap-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--jade-deep);
+      border: none;
+      color: #fff;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s;
+    }
+
+    .ap-btn:hover {
+      background: var(--jade-dark);
+      transform: scale(1.05);
+    }
+
+    .ap-main-info {
+      flex-grow: 1;
+    }
+
+    .ap-main-title {
+      font-weight: 800;
+      font-size: 13.5px;
+      color: var(--jade-dark);
+      margin-bottom: 4px;
+    }
+
+    .ap-progress-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .ap-bar-wrap {
+      flex-grow: 1;
+      height: 6px;
+      background: var(--cream-2);
+      border-radius: 999px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .ap-bar-fill {
+      height: 100%;
+      background: var(--jade);
+      width: 0%;
+      border-radius: 999px;
+    }
+
+    .ap-duration-txt {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--ink-3);
+      white-space: nowrap;
+    }
+
+    .ap-speed-btn {
+      background: var(--cream-2);
+      border: 1.5px solid var(--paper-line);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 800;
+      color: var(--ink-2);
+    }
+
+    .social-post-card {
+      background: var(--white);
+      border: 2px solid var(--cream-3);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+    }
+
+    .post-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      border-bottom: 1.5px solid var(--cream-2);
+    }
+
+    .post-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 18px;
+      flex-shrink: 0;
+      color: #fff;
+    }
+
+    .post-avatar.ha {
+      background: var(--jade-deep);
+    }
+
+    .post-meta-name {
+      font-weight: 800;
+      font-size: 14.5px;
+      color: var(--ink);
+    }
+
+    .post-meta-time {
+      font-size: 12px;
+      color: var(--ink-3);
+      font-weight: 600;
+    }
+
+    .post-listen-btn {
+      margin-left: auto;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 1.5px solid var(--cream-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      transition: all .2s;
+      flex-shrink: 0;
+    }
+
+    .post-listen-btn:hover {
+      background: var(--accent-pale);
+      border-color: var(--accent);
+    }
+
+    .post-photo {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--cream-2);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .post-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .post-caption {
+      padding: 18px 20px;
+      font-size: 15.5px;
+      line-height: 1.65;
+      color: var(--ink);
+    }
+
+    .post-caption strong {
+      background: var(--accent-pale);
+      color: var(--accent-text);
+      font-weight: 700;
+      border-radius: 4px;
+      padding: 1px 4px;
+    }
+
+    .comment-count-bar {
+      padding: 10px 20px;
+      border-top: 1.5px solid var(--cream-2);
+      background: var(--cream);
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--ink-3);
+    }
+
+    .comment-thread {
+      padding: 16px 20px 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-height: 60px;
+      max-height: 420px;
+      overflow-y: auto;
+    }
+
+    .cm-turn {
+      display: flex;
+      gap: 10px;
+      animation: fadein 0.3s ease;
+    }
+
+    .cm-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 13px;
+      color: #fff;
+      margin-top: 2px;
+    }
+
+    .cm-avatar.khoa {
+      background: var(--accent);
+      color: var(--accent-text);
+    }
+
+    .cm-avatar.ha {
+      background: var(--jade-deep);
+    }
+
+    .cm-bubble {
+      flex-grow: 1;
+      background: var(--cream);
+      border-radius: 14px;
+      padding: 10px 14px;
+    }
+
+    .cm-name {
+      font-weight: 800;
+      font-size: 12.5px;
+      color: var(--jade-dark);
+      margin-bottom: 3px;
+    }
+
+    .cm-text {
+      font-size: 14.5px;
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    .comment-footer {
+      background: var(--cream);
+      border-top: 2px solid var(--cream-2);
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Word highlights (word-boundary TTS sync + collocation bolding) */
+    .chat-word-span {
+      padding: 0 1px;
+      transition: background .15s, color .15s;
+    }
+
+    .chat-word-span.highlighted-word {
+      background: var(--accent);
+      color: var(--accent-text);
+      font-weight: 700;
+      border-radius: 3px;
+    }
+
+    .bold-colloc {
+      background: var(--accent-pale);
+      color: var(--accent-text);
+      font-weight: 700;
+      border-radius: 4px;
+      padding: 1px 4px;
+    }
+
+    /* ===== VOCABULARY FLASHCARDS ===== */
+    .vocab-section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 34px 0 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .vocab-status {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--jade-text);
+      background: var(--jade-pale);
+      padding: 6px 14px;
+      border-radius: 999px;
+    }
+
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .vcard {
+      perspective: 1000px;
+      height: 290px;
+      cursor: pointer;
+    }
+
+    .vcard-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+
+    .vcard.flipped .vcard-inner {
+      transform: rotateY(180deg);
+    }
+
+    .vcard.flipped .vfront {
+      visibility: hidden;
+    }
+
+    .vcard:not(.flipped) .vback {
+      visibility: hidden;
+    }
+
+    .vface {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: var(--radius);
+      border: 2px solid var(--cream-2);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .vfront {
+      background: var(--white);
+    }
+
+    .vocab-audio-btn,
+    .vocab-audio-btn-back {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 10;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 1.5px solid var(--cream-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      transition: all .2s;
+    }
+
+    .vocab-audio-btn:hover,
+    .vocab-audio-btn-back:hover {
+      background: var(--accent-pale);
+      border-color: var(--accent);
+      transform: scale(1.08);
+    }
+
+    .vfront-head {
+      padding: 16px;
+      text-align: left;
+    }
+
+    .vfront-head .word {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--jade-dark);
+      margin-bottom: 2px;
+    }
+
+    .vfront-head .ipa {
+      font-size: 13px;
+      color: var(--ink-3);
+      font-weight: 600;
+    }
+
+    .vfront-img-wrap {
+      flex-grow: 1;
+      background: var(--cream);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .img-fallback-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: var(--cream);
+      color: var(--ink-faint);
+      font-size: 11.5px;
+      font-weight: 700;
+      text-align: center;
+      padding: 12px;
+    }
+
+    .img-fallback-placeholder .fb-icon {
+      font-size: 30px;
+      opacity: .7;
+    }
+
+    .vfront-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s;
+    }
+
+    .vcard:hover .vfront-img-wrap img {
+      transform: scale(1.04);
+    }
+
+    .vback {
+      background: var(--jade-dark);
+      color: #fff;
+      transform: rotateY(180deg);
+      padding: 24px;
+      text-align: left;
+      justify-content: space-between;
+    }
+
+    .vback-head {
+      border-bottom: 1.5px solid rgba(255, 255, 255, 0.15);
+      padding-bottom: 12px;
+    }
+
+    .vtype {
+      font-size: 11px;
+      font-weight: 800;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .vback-head .nghia {
+      font-size: 19px;
+      font-weight: 850;
+      margin-top: 8px;
+      color: var(--accent);
+    }
+
+    .vback .ex {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+      margin: 16px 0;
+    }
+
+    .ex-en {
+      font-size: 14px;
+      line-height: 1.5;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    .ex-en strong {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .vback .hint {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--ink-faint);
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      .vocab-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        gap: 16px;
+        padding-bottom: 10px;
+      }
+
+      .vocab-grid::-webkit-scrollbar {
+        display: none;
+      }
+
+      .vcard {
+        flex: 0 0 85%;
+        scroll-snap-align: center;
+      }
+    }
+
+    /* ===== PRACTICE TIERS ===== */
+    .practice-part-tabs {
+      display: flex;
+      background: var(--cream-2);
+      padding: 6px;
+      border-radius: 14px;
+      gap: 6px;
+      margin-bottom: 24px;
+    }
+
+    .part-tab-btn {
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--ink-2);
+      transition: all .2s;
+    }
+
+    .part-tab-btn.active {
+      background: var(--white);
+      color: var(--jade-dark);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .step-header-box {
+      background: var(--cream);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      border: 1.5px solid var(--cream-2);
+    }
+
+    .step-header-title {
+      font-size: 17px;
+      font-weight: 850;
+      color: var(--jade-dark);
+      margin-bottom: 4px;
+    }
+
+    .step-header-desc {
+      font-size: 13.5px;
+      color: var(--ink-2);
+      font-weight: 600;
+    }
+
+    /* Matching columns layout (Extra Task 2) */
+    .extra-match-wrapper {
+      position: relative;
+      background: var(--cream);
+      border: 2px solid var(--cream-2);
+      border-radius: var(--radius);
+      padding: 24px;
+      overflow: visible;
+    }
+
+    .match-svg-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .match-conn-path {
+      fill: none;
+      stroke-width: 4px;
+      stroke-linecap: round;
+    }
+
+    .match-grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 60px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .match-col {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .match-card-node {
+      background: var(--white);
+      border: 2px solid var(--cream-2);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--ink-2);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: all .25s;
+      box-shadow: var(--shadow-sm);
+      user-select: none;
+    }
+
+    .match-card-node:hover:not(.paired) {
+      border-color: var(--sage);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .match-card-node.selected {
+      border-color: var(--accent);
+      background: var(--accent-pale);
+      color: var(--accent-text);
+    }
+
+    .match-card-node.paired {
+      border-color: var(--jade);
+      background: var(--jade-pale);
+      color: var(--jade-text);
+      cursor: default;
+    }
+
+    .match-badge {
+      width: 24px;
+      height: 24px;
+      background: var(--cream-2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--ink-3);
+    }
+
+    .match-card-node.selected .match-badge {
+      background: var(--accent);
+      color: var(--white);
+    }
+
+    .match-card-node.paired .match-badge {
+      background: var(--jade);
+      color: var(--white);
+    }
+
+    /* Fill-in / select inputs (Matching / True-False / Grammar tiers) */
+    .fill-sentence-card {
+      background: var(--white);
+      border: 2px solid var(--cream-2);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      line-height: 2;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .find-word-item {
+      border-bottom: 1.5px solid var(--cream-2);
+      padding: 14px 0;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink-2);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .find-word-item:last-child {
+      border-bottom: none;
+    }
+
+    .fill-blank-input {
+      background: var(--cream);
+      border: 2px solid var(--paper-line-2);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink-2);
+      outline: none;
+      transition: all .2s;
+      width: 150px;
+    }
+
+    .fill-blank-input:focus {
+      border-color: var(--jade);
+    }
+
+    .fill-blank-input.correct {
+      border-color: var(--correct);
+      background: var(--correct-bg);
+      color: var(--jade-text);
+    }
+
+    .fill-blank-input.wrong {
+      border-color: var(--wrong);
+      background: var(--wrong-bg);
+      color: var(--wrong);
+    }
+
+    .grammar-select {
+      background: var(--cream);
+      border: 2px solid var(--paper-line-2);
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink-2);
+      outline: none;
+      transition: all .2s;
+      cursor: pointer;
+    }
+
+    .grammar-select:focus {
+      border-color: var(--jade);
+    }
+
+    .grammar-select.correct {
+      border-color: var(--correct);
+      background: var(--correct-bg);
+      color: var(--jade-text);
+    }
+
+    .grammar-select.wrong {
+      border-color: var(--wrong);
+      background: var(--wrong-bg);
+      color: var(--wrong);
+    }
+
+    /* True/False tier */
+    .tf-layout-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    @media (max-width: 800px) {
+      .tf-layout-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .tf-context-panel {
+      background: var(--cream);
+      border: 2px solid var(--cream-2);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tf-context-header {
+      background: var(--jade-pale);
+      color: var(--jade-text);
+      font-weight: 800;
+      font-size: 13.5px;
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1.5px solid var(--cream-3);
+    }
+
+    .tf-context-body {
+      padding: 16px;
+    }
+
+    .tf-post-snippet {
+      background: var(--white);
+      border: 1.5px solid var(--cream-2);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+    }
+
+    .tf-post-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tf-comments-snippet {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .tf-cm-row {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .tf-cm-bubble {
+      background: var(--white);
+      border: 1.5px solid var(--cream-2);
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-size: 13px;
+      color: var(--ink-2);
+      line-height: 1.45;
+      flex-grow: 1;
+    }
+
+    .tf-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      border-bottom: 1.5px solid var(--cream-2);
+      padding: 14px 0;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink-2);
+    }
+
+    .tf-item:last-child {
+      border-bottom: none;
+    }
+
+    .tf-btn-grp {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .tf-btn {
+      padding: 7px 16px;
+      border-radius: 999px;
+      border: 1.5px solid var(--paper-line-2);
+      background: var(--cream);
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--ink-2);
+      transition: all .2s;
+    }
+
+    .tf-btn.chosen-correct {
+      background: var(--correct);
+      border-color: var(--correct);
+      color: #fff;
+    }
+
+    .tf-btn.chosen-wrong {
+      background: var(--wrong);
+      border-color: var(--wrong);
+      color: #fff;
+    }
+
+    .feedback {
+      margin-top: 18px;
+      font-weight: 700;
+      text-align: center;
+      min-height: 24px;
+      font-size: 14.5px;
+      color: var(--wrong);
+      padding: 8px 12px;
+      border-radius: 8px;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .feedback.success {
+      color: var(--correct);
+      background: var(--jade-pale);
+    }
+
+    /* ===== EXTRA PRACTICE COMPONENTS ===== */
+    .extra-part-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      background: var(--cream-2);
+      padding: 6px;
+      border-radius: 14px;
+      gap: 6px;
+      margin-bottom: 24px;
+    }
+
+    .extra-tab-btn {
+      flex: 1;
+      min-width: 140px;
+      background: transparent;
+      border: none;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--ink-2);
+      transition: all .2s;
+    }
+
+    .extra-tab-btn.active {
+      background: var(--white);
+      color: var(--jade-dark);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Task 1 Flip MCQ */
+    .mcq-flip-container {
+      perspective: 1000px;
+      margin-bottom: 20px;
+    }
+
+    .mcq-flip-inner {
+      position: relative;
+      width: 100%;
+      transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.3, 1);
+      transform-style: preserve-3d;
+    }
+
+    .mcq-flip-container.flipped .mcq-flip-inner {
+      transform: rotateY(180deg);
+    }
+
+    .mcq-flip-front {
+      position: relative;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      background: var(--white);
+      border: 2px solid var(--cream-2);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      min-height: 260px;
+    }
+
+    .mcq-flip-back {
+      position: absolute;
+      inset: 0;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      background: var(--jade-dark);
+      border: 2px solid var(--cream-2);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      transform: rotateY(180deg);
+      color: var(--white);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .mcq-q {
+      font-size: 16px;
+      font-weight: 850;
+      color: var(--jade-dark);
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 18px;
+    }
+
+    .mcq-opts-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    @media (max-width: 540px) {
+      .mcq-opts-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .mcq-opt {
+      text-align: left;
+      border: 1.5px solid var(--cream-3);
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-weight: 700;
+      color: var(--ink-2);
+      font-size: 13.5px;
+      transition: all .2s;
+    }
+
+    .mcq-opt:hover:not(:disabled) {
+      border-color: var(--sage);
+      background: var(--cream);
+    }
+
+    .mcq-opt.correct {
+      background: var(--correct-bg);
+      border-color: var(--correct);
+      color: var(--jade-text);
+    }
+
+    .mcq-opt.wrong {
+      background: var(--wrong-bg);
+      border-color: var(--wrong);
+      color: var(--wrong);
+    }
+
+    .mcq-flip-back.wrong-result {
+      background: #733c2a;
+    }
+
+    .flip-back-btn {
+      background: rgba(255, 255, 255, 0.2);
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-top: 14px;
+    }
+
+    /* Task 3 Slideshow Layout */
+    .slide-options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    @media (max-width: 500px) {
+      .slide-options-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .slide-opt-btn {
+      text-align: left;
+      border: 1.5px solid var(--paper-line-2);
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink-2);
+      transition: all .2s;
+      cursor: pointer;
+    }
+
+    .slide-opt-btn:hover:not(:disabled) {
+      background: var(--cream);
+      border-color: var(--sage);
+    }
+
+    .slide-opt-btn.chosen-correct {
+      border-color: var(--jade);
+      background: var(--jade-pale);
+      color: var(--jade-text);
+    }
+
+    .slide-opt-btn.chosen-wrong {
+      border-color: var(--wrong);
+      background: var(--wrong-bg);
+      color: var(--wrong);
+      animation: wrong-shake 0.4s ease;
+    }
+
+    .slide-opt-btn.distractor-btn {
+      border-color: var(--wrong-bg);
+      color: var(--wrong);
+    }
+
+    .slide-opt-btn.distractor-btn:hover:not(:disabled) {
+      background: var(--wrong-bg);
+      border-color: var(--wrong);
+    }
+
+    .slide-opt-btn.distractor-btn.chosen-correct {
+      border-color: var(--jade);
+      background: var(--jade-pale);
+      color: var(--jade-text);
+    }
+
+    .slide-opt-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* Task 4 Choose Correct Continuation (Articles) */
+    .continuation-card {
+      background: var(--white);
+      border: 2px solid var(--cream-2);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 18px;
+    }
+
+    .continuation-context {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--ink-2);
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1.5px dashed var(--cream-3);
+    }
+
+    .continuation-opts {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .continuation-opt-btn {
+      text-align: left;
+      border: 1.5px solid var(--paper-line-2);
+      background: var(--cream);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--ink-2);
+      transition: all .2s;
+      display: flex;
+      gap: 10px;
+    }
+
+    .continuation-opt-btn:hover:not(:disabled) {
+      border-color: var(--sage);
+      background: var(--white);
+    }
+
+    .continuation-opt-btn.correct {
+      background: var(--correct-bg);
+      border-color: var(--correct);
+      color: var(--jade-text);
+    }
+
+    .continuation-opt-btn.wrong {
+      background: var(--wrong-bg);
+      border-color: var(--wrong);
+      color: var(--wrong);
+      animation: wrong-shake 0.4s ease;
+    }
+
+    .continuation-opt-btn:disabled {
+      cursor: not-allowed;
+    }
+
+    .continuation-exp {
+      margin-top: 12px;
+      padding: 10px 14px;
+      background: var(--cream);
+      border-radius: 10px;
+      font-size: 13px;
+      line-height: 1.5;
+      display: none;
+    }
+
+    /* Task 5 Picture Discussion */
+    .scene-hero-wrapper {
+      background: var(--white);
+      border: 2px solid var(--cream-2);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .scene-hero-art {
+      width: 100%;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      background: var(--cream-2);
+      position: relative;
+    }
+
+    .scene-hero-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .scene-info-panel {
+      padding: 20px;
+      background: var(--white);
+    }
+
+    .scene-info-pan el h4 {
+      margin: 0 0 6px;
+      font-size: 18px;
+      color: var(--jade-dark);
+      font-weight: 800;
+    }
+
+    .scene-info-panel p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--ink-2);
+      line-height: 1.5;
+    }
+
+    .mcq-card {
+      background: var(--white);
+      border: 2px solid var(--cream-2);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      margin-bottom: 14px;
+    }
+
+    .reflect-card {
+      background: var(--cream);
+      border: 2px dashed var(--cream-3);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+
+    .reflect-q {
+      font-size: 15px;
+      font-weight: 850;
+      color: var(--jade-dark);
+      margin-bottom: 12px;
+    }
+
+    .reflect-textarea {
+      width: 100%;
+      min-height: 70px;
+      background: var(--white);
+      border: 1.5px solid var(--paper-line-2);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--ink);
+      resize: vertical;
+      outline: none;
+      transition: all .2s;
+    }
+
+    .reflect-textarea:focus {
+      border-color: var(--jade);
+    }
+
+    .reflect-save-btn {
+      margin-top: 10px;
+    }
+
+    .reflect-saved-fb {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--jade-text);
+      margin-top: 8px;
+      display: none;
+    }
+
+    /* ===== EVALUATION & RESULTS ===== */
+    .eval-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .eval-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: var(--cream);
+      padding: 16px 18px;
+      border-radius: 14px;
+      border: 1.5px solid var(--paper-line);
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .eval-item:hover {
+      border-color: var(--jade);
+      background: #f7faf8;
+    }
+
+    .eval-item.checked {
+      background: var(--correct-bg);
+      border-color: var(--correct);
+    }
+
+    .eval-check {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      border: 2px solid var(--ink-faint);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: transparent;
+      font-size: 13px;
+      font-weight: 900;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .eval-item.checked .eval-check {
+      background: var(--correct);
+      border-color: var(--correct);
+      color: #fff;
+    }
+
+    .eval-text {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .eval-result-card {
+      background: linear-gradient(135deg, var(--jade-dark), var(--jade-deep));
+      color: #fff;
+      border-radius: 20px;
+      padding: 28px;
+      text-align: center;
+      display: none;
+      animation: popIn .5s cubic-bezier(.2, .8, .3, 1);
+    }
+
+    .eval-result-card.show {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- COMPACT FLOATING SIDE TAB (Docks on right edge, tap or swipe left to open) -->
+  <button class="pt-toggle-btn" id="ptToggleBtn" onclick="toggleMobileDrawer()" title="Lesson tasks &amp; progress" aria-label="Open Lesson Tasks">
+    <span class="pt-tab-icon">📋</span>
+    <span class="pt-tab-label">Tasks</span>
+    <span id="ptBtnPct">0%</span>
+  </button>
+
+  <div class="pt-backdrop" id="pt-backdrop" onclick="closeMobileDrawer()"></div>
+
+  <!-- PROGRESS TRACKER DRAWER -->
+  <aside class="progress-tracker" id="progress-tracker">
+    <div class="pt-header">
+      <h3>Lesson Progress</h3>
+      <button class="pt-close" onclick="closeMobileDrawer()">&times;</button>
+    </div>
+    <div class="pt-progress-box">
+      <div class="pt-label-row">
+        <span>Completion</span>
+        <span id="ptProgressLabel">0% Completed</span>
+      </div>
+      <div class="pt-bar-track">
+        <div class="pt-bar-fill" id="ptProgressBar"></div>
+      </div>
+    </div>
+    <div class="pt-items">
+      <div class="pt-item" data-key="post" onclick="navigateStep('sec-post')">
+        <div class="pt-box">✓</div>
+        <span>1. Social Post &amp; Vocab</span>
+      </div>
+      <div class="pt-item" data-key="practice" onclick="navigateStep('sec-practice')">
+        <div class="pt-box">✓</div>
+        <span>2. Practice (3 Tiers)</span>
+      </div>
+      <div class="pt-item" data-key="extra-practice" onclick="navigateStep('sec-extra-practice')">
+        <div class="pt-box">✓</div>
+        <span>3. Extra Practice (5 Tasks)</span>
+      </div>
+      <div class="pt-item" data-key="selfeval" onclick="navigateStep('sec-self-eval')">
+        <div class="pt-box">✓</div>
+        <span>4. Self-Evaluation</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- HERO SECTION -->
+  <header class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">🌍 UNIT 2 · GETTING STARTED</span>
+      <h1>
+        Getting Started
+        <span class="accent-line">A Multicultural World</span>
+      </h1>
+      <p class="sub">
+        Read Hà's social media post about an international festival and Khoa's comments underneath, learn 4 key
+        words about cultural diversity, and practise articles.
+      </p>
+
+      <div class="hero-obj-cards">
+        <div class="hero-obj-card">
+          <div class="obj-num">1</div>
+          <div class="obj-content">
+            <div class="obj-title-en">Get an overview of the unit's language and skills points</div>
+          </div>
+        </div>
+        <div class="hero-obj-card">
+          <div class="obj-num">2</div>
+          <div class="obj-content">
+            <div class="obj-title-en">Understand &amp; use words related to cultural diversity (diversity, cuisine,
+              tug of war, bamboo dancing)</div>
+          </div>
+        </div>
+      </div>
+      <button class="accept-btn" onclick="startLesson()">🚀 Start learning →</button>
+    </div>
+  </header>
+
+  <main class="main-container">
+
+    <!-- SECTION 2: SOCIAL POST & VOCABULARY -->
+    <section class="block section-locked" id="sec-post">
+      <div class="lock-overlay" id="lockPost">
+        <div class="lock-badge">🔒 Click "🚀 Start learning →" above to begin this lesson!</div>
+      </div>
+      <div>
+        <div class="section-eyebrow">📱 SOCIAL MEDIA POST</div>
+        <h2>📱 Hà's Weekend Post</h2>
+
+        <!-- Social Post Card (static, always visible) -->
+        <div class="social-post-card">
+          <div class="post-head">
+            <div class="post-avatar ha">H</div>
+            <div>
+              <div class="post-meta-name">Hà</div>
+              <div class="post-meta-time">Saturday · 🌏 Public</div>
+            </div>
+            <button class="post-listen-btn"
+              onclick="speakMsg(document.getElementById('postCaptionText').textContent,'ha')"
+              title="Listen to the post">🔊</button>
+          </div>
+          <div class="post-photo">
+            <img src="photo/getready_unit2_g12_post.png" alt="Cultural Diversity Fair"
+              onerror="imgFallback(this,'🌏')">
+          </div>
+          <div class="post-caption" id="postCaptionText">
+            Spent my Saturday at the Cultural Diversity Fair downtown! 🌏 I tried <strong>bamboo dancing</strong> for
+            the first time and almost tripped like 5 times. 😂 There was so much <strong>cuisine</strong> to try, but
+            a massive <strong>tug of war</strong> line was honestly longer than any food line I've seen all day — the
+            line went all the way around the park! It's amazing how much <strong>diversity</strong> you can see in
+            just one afternoon.
+          </div>
+          <div class="comment-count-bar">💬 6 comments</div>
+
+          <div class="comment-thread" id="commentThread"></div>
+
+          <div class="comment-footer">
+            <div>
+              <button class="chip-btn" id="btnNextComment" onclick="showNextComment()">Next Comment →</button>
+              <button class="chip-btn ghost" onclick="revealAllComments()">Show All</button>
+            </div>
+            <span id="commentCounter" style="font-size:13.5px;font-weight:800;color:var(--ink-2);">0 / 6</span>
+          </div>
+        </div>
+
+        <!-- Vocabulary Flashcards -->
+        <div class="vocab-section-head">
+          <div>
+            <h3 style="margin:0 0 4px;font-size:22px;color:var(--jade-dark);font-weight:800;">🧠 Target Words (4 Cards)
+            </h3>
+            <div style="font-size:13.5px;color:var(--ink-2);font-weight:600;">💡 <em>Click or tap on a card to flip and
+                view its meaning &amp; example sentence</em></div>
+          </div>
+          <span class="vocab-status" id="vocabStatus">Flipped 0 / 4 cards</span>
+        </div>
+
+        <div class="vocab-grid" id="vocabGrid" data-count="4">
+          <!-- Card 1 -->
+          <div class="vcard" onclick="flipCard(this, 'v1')">
+            <div class="vcard-inner">
+              <div class="vface vfront">
+                <button class="vocab-audio-btn" onclick="speakWord('diversity');event.stopPropagation()"
+                  title="Listen to pronunciation">🔊</button>
+                <div class="vfront-head">
+                  <div class="word">diversity</div>
+                  <div class="ipa">/daɪˈvɜːsəti/</div>
+                </div>
+                <div class="vfront-img-wrap">
+                  <img src="photo/getready_unit2_g12_pic1.png" alt="diversity" onerror="imgFallback(this,'🌍')">
+                </div>
+              </div>
+              <div class="vface vback">
+                <button class="vocab-audio-btn-back" onclick="speakWord('diversity');event.stopPropagation()"
+                  title="Listen to pronunciation">🔊</button>
+                <div class="vback-head">
+                  <span class="vtype">noun</span>
+                  <div class="nghia">sự đa dạng</div>
+                </div>
+                <div class="ex">
+                  <div class="ex-en">"The school celebrates <strong>diversity</strong> by holding an international food
+                    day every year."</div>
+                </div>
+                <div class="hint">Tap to flip back ↺</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="vcard" onclick="flipCard(this, 'v2')">
+            <div class="vcard-inner">
+              <div class="vface vfront">
+                <button class="vocab-audio-btn" onclick="speakWord('cuisine');event.stopPropagation()"
+                  title="Listen to pronunciation">🔊</button>
+                <div class="vfront-head">
+                  <div class="word">cuisine</div>
+                  <div class="ipa">/kwɪˈziːn/</div>
+                </div>
+                <div class="vfront-img-wrap">
+                  <img src="photo/getready_unit2_g12_pic2.png" alt="cuisine" onerror="imgFallback(this,'🍜')">
+                </div>
+              </div>
+              <div class="vface vback">
+                <button class="vocab-audio-btn-back" onclick="speakWord('cuisine');event.stopPropagation()"
+                  title="Listen to pronunciation">🔊</button>
+                <div class="vback-head">
+                  <span class="vtype">noun</span>
+                  <div class="nghia">nền ẩm thực, phong cách nấu ăn</div>
+                </div>
+                <div class="ex">
+                  <div class="ex-en">"Vietnamese <strong>cuisine</strong> is famous for its fresh herbs and light
+                    flavours."</div>
+                </div>
+                <div class="hint">Tap to flip back ↺</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="vcard" onclick="flipCard(this, 'v3')">
+            <div class="vcard-inner">
+              <div class="vface vfront">
+                <button class="vocab-audio-btn" onclick="speakWord('tug of war');event.stopPropagation()"
+                  title="Listen to pronunciation">🔊</button>
+                <div class="vfront-head">
+                  <div class="word">tug of war</div>
+                  <div class="ipa">/ˌtʌɡ əv ˈwɔː/</div>
+                </div>
+                <div class="vfront-img-wrap">
+                  <img src="photo/getready_unit2_g12_pic3.png" alt="tug of war" onerror="imgFallback(this,'🪢')">
+                </div>
+              </div>
+              <div class="vface vback">
+                <button class="vocab-audio-btn-back" onclick="speakWord('tug of war');event.stopPropagation()"
+                  title="Listen to pronunciation">🔊</button>
+                <div class="vback-head">
+                  <span class="vtype">noun phrase</span>
+                  <div class="nghia">trò kéo co</div>
+                </div>
+                <div class="ex">
+                  <div class="ex-en">"Our class won the <strong>tug of war</strong> competition at the sports festival."
+                  </div>
+                </div>
+                <div class="hint">Tap to flip back ↺</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="vcard" onclick="flipCard(this, 'v4')">
+            <div class="vcard-inner">
+              <div class="vface vfront">
+                <button class="vocab-audio-btn" onclick="speakWord('bamboo dancing');event.stopPropagation()"
+                  title="Listen to pronunciation">🔊</button>
+                <div class="vfront-head">
+                  <div class="word">bamboo dancing</div>
+                  <div class="ipa">/ˌbæmbuː ˈdɑːnsɪŋ/</div>
+                </div>
+                <div class="vfront-img-wrap">
+                  <img src="photo/getready_unit2_g12_pic4.png" alt="bamboo dancing" onerror="imgFallback(this,'💃')">
+                </div>
+              </div>
+              <div class="vface vback">
+                <button class="vocab-audio-btn-back" onclick="speakWord('bamboo dancing');event.stopPropagation()"
+                  title="Listen to pronunciation">🔊</button>
+                <div class="vback-head">
+                  <span class="vtype">noun phrase</span>
+                  <div class="nghia">múa sạp</div>
+                </div>
+                <div class="ex">
+                  <div class="ex-en">"Tourists often try <strong>bamboo dancing</strong> during traditional Vietnamese
+                    festivals."</div>
+                </div>
+                <div class="hint">Tap to flip back ↺</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align:right;margin-top:24px;">
+          <button class="chip-btn" id="btnUnlockPractice" disabled onclick="unlockPracticeSection()">✓ Finish Post &amp;
+            Move to Practice →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: PRACTICE -->
+    <section class="block section-locked" id="sec-practice">
+      <div class="lock-overlay" id="lockPractice">
+        <div class="lock-badge">🔒 Complete the Post &amp; Vocabulary above to unlock Practice!</div>
+      </div>
+      <div>
+        <div class="section-eyebrow">📝 PRACTICE</div>
+        <h2>📝 Practice</h2>
+
+        <div class="practice-part-tabs">
+          <button class="part-tab-btn active" id="tabMatchBtn" onclick="switchPracticeTab('match')">🟢 Matching</button>
+          <button class="part-tab-btn" id="tabTfBtn" onclick="switchPracticeTab('tf')">🟡 True/False</button>
+          <button class="part-tab-btn" id="tabGramBtn" onclick="switchPracticeTab('gram')">🔴 Grammar</button>
+        </div>
+
+        <!-- TIER 1: MATCHING -->
+        <div id="tabMatch">
+          <div class="step-header-box">
+            <div class="step-header-title">🟢 Matching</div>
+            <div class="step-header-desc">Match each word with its correct English definition.</div>
+          </div>
+
+          <div class="fill-sentence-card">
+            <div class="find-word-item">
+              <span>1. <strong>bamboo dancing</strong> — a folk dance where ______</span>
+              <select class="grammar-select" id="match1" data-ans="d4" autocomplete="off">
+                <option value="">-- select definition --</option>
+                <option value="d3">two teams pull opposite ends of a rope</option>
+                <option value="d1">people or things of many different types are included</option>
+                <option value="d4">dancers step between rhythmically clapping bamboo poles</option>
+                <option value="d2">a style of cooking associated with a country or region</option>
+              </select>
+            </div>
+            <div class="find-word-item">
+              <span>2. <strong>diversity</strong> — the state of ______</span>
+              <select class="grammar-select" id="match2" data-ans="d1" autocomplete="off">
+                <option value="">-- select definition --</option>
+                <option value="d2">a style of cooking associated with a country or region</option>
+                <option value="d4">dancers step between rhythmically clapping bamboo poles</option>
+                <option value="d1">people or things of many different types are included</option>
+                <option value="d3">two teams pull opposite ends of a rope</option>
+              </select>
+            </div>
+            <div class="find-word-item">
+              <span>3. <strong>cuisine</strong> — a style of ______</span>
+              <select class="grammar-select" id="match3" data-ans="d2" autocomplete="off">
+                <option value="">-- select definition --</option>
+                <option value="d1">people or things of many different types are included</option>
+                <option value="d2">a style of cooking associated with a country or region</option>
+                <option value="d3">two teams pull opposite ends of a rope</option>
+                <option value="d4">dancers step between rhythmically clapping bamboo poles</option>
+              </select>
+            </div>
+            <div class="find-word-item">
+              <span>4. <strong>tug of war</strong> — a contest where ______</span>
+              <select class="grammar-select" id="match4" data-ans="d3" autocomplete="off">
+                <option value="">-- select definition --</option>
+                <option value="d4">dancers step between rhythmically clapping bamboo poles</option>
+                <option value="d3">two teams pull opposite ends of a rope</option>
+                <option value="d2">a style of cooking associated with a country or region</option>
+                <option value="d1">people or things of many different types are included</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:12px;align-items:center;margin-top:20px;">
+            <button class="chip-btn" id="btnCheckMatch" onclick="checkMatch()">Check Answers</button>
+            <button class="chip-btn ghost" onclick="revealMatch()">Show Answers</button>
+          </div>
+          <div id="matchFb" class="feedback" style="display:none;"></div>
+
+          <div style="margin-top:28px;text-align:right;">
+            <button class="chip-btn" onclick="nextPracticeTab('tf')">✓ Next: True/False →</button>
+          </div>
+        </div>
+
+        <!-- TIER 2: TRUE/FALSE -->
+        <div id="tabTf" style="display:none;">
+          <div class="step-header-box">
+            <div class="step-header-title">🟡 True or False</div>
+            <div class="step-header-desc">Read Hà's post and Khoa's comments on the left, then decide if each statement is True or False.</div>
+          </div>
+
+          <div class="tf-layout-grid">
+            <!-- LEFT: Reading Context Card -->
+            <div class="tf-context-panel">
+              <div class="tf-context-header">
+                <span>📖 Reading Reference</span>
+                <button class="post-listen-btn" style="width:30px;height:30px;font-size:11px;" onclick="speakMsg(document.getElementById('postCaptionText').textContent,'ha')" title="Listen to post">🔊</button>
+              </div>
+              <div class="tf-context-body">
+                <div class="tf-post-snippet">
+                  <div class="tf-post-meta">
+                    <div class="post-avatar ha" style="width:32px;height:32px;font-size:14px;">H</div>
+                    <div>
+                      <div style="font-weight:800;font-size:13px;color:var(--ink);">Hà</div>
+                      <div style="font-size:11px;color:var(--ink-3);font-weight:600;">Cultural Diversity Fair 🌏</div>
+                    </div>
+                  </div>
+                  <p style="font-size:13.5px;line-height:1.55;color:var(--ink-2);margin-top:8px;">
+                    Spent my Saturday at the Cultural Diversity Fair downtown! 🌏 I tried <strong>bamboo dancing</strong> for the first time and almost tripped like 5 times. 😂 There was so much <strong>cuisine</strong> to try, but a massive <strong>tug of war</strong> line was honestly longer than any food line I've seen all day — the line went all the way around the park! It's amazing how much <strong>diversity</strong> you can see in just one afternoon.
+                  </p>
+                </div>
+
+                <div class="tf-comments-snippet">
+                  <div style="font-size:11.5px;font-weight:800;color:var(--ink-3);margin:12px 0 6px;text-transform:uppercase;letter-spacing:0.04em;">💬 Discussion Thread (6 Comments)</div>
+                  <div class="tf-cm-row">
+                    <div class="cm-avatar khoa" style="width:24px;height:24px;font-size:10px;">K</div>
+                    <div class="tf-cm-bubble">
+                      <strong style="color:var(--jade-dark);">Khoa:</strong> Haha no way, you actually did <strong>bamboo dancing</strong>?? I always chicken out and just watch.
+                    </div>
+                  </div>
+                  <div class="tf-cm-row">
+                    <div class="cm-avatar ha" style="width:24px;height:24px;font-size:10px;">H</div>
+                    <div class="tf-cm-bubble">
+                      <strong style="color:var(--jade-dark);">Hà:</strong> You should've come! It wasn't that scary once I got the rhythm going.
+                    </div>
+                  </div>
+                  <div class="tf-cm-row">
+                    <div class="cm-avatar khoa" style="width:24px;height:24px;font-size:10px;">K</div>
+                    <div class="tf-cm-bubble">
+                      <strong style="color:var(--jade-dark);">Khoa:</strong> I'm more of a food person, to be honest. Did they have the Korean <strong>cuisine</strong> booth again this year? Last year's kimchi was insane.
+                    </div>
+                  </div>
+                  <div class="tf-cm-row">
+                    <div class="cm-avatar ha" style="width:24px;height:24px;font-size:10px;">H</div>
+                    <div class="tf-cm-bubble">
+                      <strong style="color:var(--jade-dark);">Hà:</strong> Yes! But honestly the <strong>tug of war</strong> line was still longer than the food line, everyone wanted to compete.
+                    </div>
+                  </div>
+                  <div class="tf-cm-row">
+                    <div class="cm-avatar khoa" style="width:24px;height:24px;font-size:10px;">K</div>
+                    <div class="tf-cm-bubble">
+                      <strong style="color:var(--jade-dark);">Khoa:</strong> That's wild, I didn't expect that many people to care about a rope game. Also kind of jealous you got to try real tug of war — we don't really do that where I live.
+                    </div>
+                  </div>
+                  <div class="tf-cm-row">
+                    <div class="cm-avatar ha" style="width:24px;height:24px;font-size:10px;">H</div>
+                    <div class="tf-cm-bubble">
+                      <strong style="color:var(--jade-dark);">Hà:</strong> You're missing out, for real! It's way more intense than it looks once there's an actual crowd cheering. I guess that's the thing about cultural <strong>diversity</strong> — everyone gets hyped about something different.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT: True / False Questions -->
+            <div class="tf-questions-panel">
+              <div class="fill-sentence-card" style="line-height:1.8;padding:20px;">
+                <div class="tf-item">
+                  <span>1. Hà tried bamboo dancing for the first time at the fair.</span>
+                  <div class="tf-btn-grp" id="tfGrp1" data-ans="T">
+                    <button class="tf-btn" onclick="answerTF(1,'T')">True</button>
+                    <button class="tf-btn" onclick="answerTF(1,'F')">False</button>
+                  </div>
+                </div>
+                <div class="tf-item">
+                  <span>2. Khoa also tried bamboo dancing together with Hà.</span>
+                  <div class="tf-btn-grp" id="tfGrp2" data-ans="F">
+                    <button class="tf-btn" onclick="answerTF(2,'T')">True</button>
+                    <button class="tf-btn" onclick="answerTF(2,'F')">False</button>
+                  </div>
+                </div>
+                <div class="tf-item">
+                  <span>3. The tug of war line was shorter than the food line.</span>
+                  <div class="tf-btn-grp" id="tfGrp3" data-ans="F">
+                    <button class="tf-btn" onclick="answerTF(3,'T')">True</button>
+                    <button class="tf-btn" onclick="answerTF(3,'F')">False</button>
+                  </div>
+                </div>
+                <div class="tf-item">
+                  <span>4. Khoa was curious about the Korean cuisine booth.</span>
+                  <div class="tf-btn-grp" id="tfGrp4" data-ans="T">
+                    <button class="tf-btn" onclick="answerTF(4,'T')">True</button>
+                    <button class="tf-btn" onclick="answerTF(4,'F')">False</button>
+                  </div>
+                </div>
+                <div class="tf-item">
+                  <span>5. Hà thinks cultural diversity means everyone likes exactly the same thing.</span>
+                  <div class="tf-btn-grp" id="tfGrp5" data-ans="F">
+                    <button class="tf-btn" onclick="answerTF(5,'T')">True</button>
+                    <button class="tf-btn" onclick="answerTF(5,'F')">False</button>
+                  </div>
+                </div>
+              </div>
+              <div id="tfFb" class="feedback" style="display:none;margin-top:14px;"></div>
+            </div>
+          </div>
+
+          <div style="margin-top:28px;text-align:right;">
+            <button class="chip-btn" onclick="nextPracticeTab('gram')">✓ Next: Grammar →</button>
+          </div>
+        </div>
+
+        <!-- TIER 3: GRAMMAR (ARTICLES) -->
+        <div id="tabGram" style="display:none;">
+          <div class="step-header-box">
+            <div class="step-header-title">🔴 Grammar — Articles</div>
+            <div class="step-header-desc">Complete the sentences based on the post, using <strong>a</strong>,
+              <strong>an</strong>, or <strong>the</strong>.</div>
+          </div>
+
+          <div class="fill-sentence-card">
+            <p>1. I tried bamboo dancing for
+              <input type="text" class="fill-blank-input" id="gram1" data-ans="the" style="width:70px;"
+                placeholder="article">
+              first time.
+            </p>
+            <p style="margin-top:14px;">2. There was
+              <input type="text" class="fill-blank-input" id="gram2" data-ans="a" style="width:70px;"
+                placeholder="article">
+              massive tug of war line at the fair.
+            </p>
+            <p style="margin-top:14px;">3.
+              <input type="text" class="fill-blank-input" id="gram3" data-ans="the" style="width:70px;"
+                placeholder="article">
+              line went all the way around the park.
+            </p>
+            <p style="margin-top:14px;">4. I saw
+              <input type="text" class="fill-blank-input" id="gram4" data-ans="an" style="width:70px;"
+                placeholder="article">
+              amazing amount of diversity in just one afternoon.
+            </p>
+          </div>
+
+          <div style="display:flex;gap:12px;align-items:center;margin-top:20px;">
+            <button class="chip-btn" id="btnCheckGram" onclick="checkGrammarBlanks()">Check Answers</button>
+            <button class="chip-btn ghost" onclick="revealGrammarBlanks()">Show Answers</button>
+          </div>
+          <div id="gramFb" class="feedback" style="display:none;"></div>
+
+          <div style="margin-top:28px;text-align:right;">
+            <button class="chip-btn" onclick="unlockExtraSection()">✓ Next: Extra Practice Task 1 →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: EXTRA PRACTICE -->
+    <section class="block section-locked" id="sec-extra-practice">
+      <div class="lock-overlay" id="lockExtra">
+        <div class="lock-badge">🔒 Complete Practice above to unlock Extra Practice!</div>
+      </div>
+      <div>
+        <div class="section-eyebrow">🚀 ADVANCED MASTERY</div>
+        <h2>⭐ Extra Practice (5 Tasks)</h2>
+        <p style="font-size:15px;color:var(--ink-2);margin-bottom:24px;">Reinforce your vocabulary and grammar skills
+          with these 5 interactive extension tasks:</p>
+
+        <div class="extra-part-tabs">
+          <button class="extra-tab-btn active" id="tabExtra1Btn" onclick="switchExtraTask(1)">🧠 Task 1: Collocation
+            Meaning</button>
+          <button class="extra-tab-btn" id="tabExtra2Btn" onclick="switchExtraTask(2)">🔗 Task 2: Verbs &amp;
+            Nouns</button>
+          <button class="extra-tab-btn" id="tabExtra3Btn" onclick="switchExtraTask(3)">🖼️ Task 3: Word-Pic
+            Match</button>
+          <button class="extra-tab-btn" id="tabExtra4Btn" onclick="switchExtraTask(4)">📰 Task 4: Article
+            Continuation</button>
+          <button class="extra-tab-btn" id="tabExtra5Btn" onclick="switchExtraTask(5)">💬 Task 5: Photo
+            Discussion</button>
+        </div>
+
+        <!-- TASK 1: COLLOCATION MEANING (3D FLIP CARDS) -->
+        <div id="extraTask1">
+          <div class="step-header-box">
+            <div class="step-header-title">🧠 Task 1: Meaning in Context (3D Flip Cards)</div>
+            <div class="step-header-desc">Click your chosen meaning for the bold word/phrase. The card will
+              <strong>flip</strong> to reveal the bilingual explanation!</div>
+          </div>
+
+          <!-- Q1 -->
+          <div class="mcq-flip-container" id="extraMcqCard1">
+            <div class="mcq-flip-inner">
+              <div class="mcq-flip-front">
+                <div class="mcq-q">
+                  <span
+                    style="background:var(--jade-pale);color:var(--jade-dark);padding:2px 10px;border-radius:8px;font-size:14px;font-weight:900;">Q1</span>
+                  <span>"There was so much <strong>cuisine</strong> to try at the fair, from noodles to grilled
+                    skewers."</span>
+                </div>
+                <div class="mcq-opts-grid">
+                  <button class="mcq-opt"
+                    onclick="checkExtraMCQ(this, false, 1, 'Incorrect. Cuisine refers to food and cooking styles, not souvenirs.', 'Sai rồi. \'Cuisine\' nói về ẩm thực/cách nấu ăn, không phải đồ lưu niệm thủ công.')">A.
+                    A type of handmade craft and souvenir from local artists.</button>
+                  <button class="mcq-opt"
+                    onclick="checkExtraMCQ(this, false, 1, 'Incorrect. Cuisine is about dishes, not sports games.', 'Sai rồi. \'Cuisine\' không nói về các trò chơi hay thi đấu thể thao.')">B.
+                    A series of outdoor games and traditional sports competitions.</button>
+                  <button class="mcq-opt"
+                    onclick="checkExtraMCQ(this, true, 1, 'Correct! \'Cuisine\' means a style of cooking and dishes linked to a specific country or region.', 'Chính xác! \'Cuisine\' nghĩa là phong cách/nền ẩm thực đặc trưng của một quốc gia hay vùng miền.')">C.
+                    A style of cooking and dishes from a specific country or region.</button>
+                  <button class="mcq-opt"
+                    onclick="checkExtraMCQ(this, false, 1, 'Incorrect. It is not about music performances.', 'Sai rồi. Không liên quan đến các buổi biểu diễn âm nhạc sân khấu.')">D.
+                    A musical performance and stage concert by community bands.</button>
+                </div>
+              </div>
+              <div class="mcq-flip-back" id="extraMcqBack1">
+                <div id="extraMcqExp1"></div>
+                <button class="flip-back-btn" onclick="flipBackMCQ(1)">↺ Flip back to view question</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="mcq-flip-container" id="extraMcqCard2">
+            <div class="mcq-flip-inner">
+              <div class="mcq-flip-front">
+                <div class="mcq-q">
+                  <span
+                    style="background:var(--jade-pale);color:var(--jade-dark);padding:2px 10px;border-radius:8px;font-size:14px;font-weight:900;">Q2</span>
+                  <span>"It's amazing how much <strong>diversity</strong> you can see at a festival like this."</span>
+                </div>
+                <div class="mcq-opts-grid">
+                  <button class="mcq-opt"
+                    onclick="checkExtraMCQ(this, true, 2, 'Correct! \'Diversity\' means the state of having many different cultures, backgrounds, or groups together.', 'Chính xác! \'Diversity\' nghĩa là sự đa dạng, quy tụ nhiều nền văn hoá và kiểu người khác nhau.')">A.
+                    The quality of having many different cultures, backgrounds, or groups together.</button>
+                  <button class="mcq-opt"
+                    onclick="checkExtraMCQ(this, false, 2, 'Incorrect. Diversity is not about the number of visitors.', 'Sai rồi. \'Diversity\' không nói về số lượng khách tham dự lễ hội.')">B.
+                    The total number of visitors and participants attending a public festival.</button>
+                  <button class="mcq-opt"
+                    onclick="checkExtraMCQ(this, false, 2, 'Incorrect. It does not refer to the festival timetable.', 'Sai rồi. Không liên quan đến thời khoá biểu hay lịch trình hoạt động.')">C.
+                    The official schedule of live performances and activities during an event.</button>
+                  <button class="mcq-opt"
+                    onclick="checkExtraMCQ(this, false, 2, 'Incorrect. Diversity is not related to admission costs or ticket prices.', 'Sai rồi. \'Diversity\' không nói về giá vé hay chi phí vào cửa.')">D.
+                    The overall cost of admission tickets, food items, and carnival games.</button>
+                </div>
+              </div>
+              <div class="mcq-flip-back" id="extraMcqBack2">
+                <div id="extraMcqExp2"></div>
+                <button class="flip-back-btn" onclick="flipBackMCQ(2)">↺ Flip back to view question</button>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:24px;text-align:right;">
+            <button class="chip-btn" onclick="switchExtraTask(2)">✓ Next: Task 2 (Verbs &amp; Nouns) →</button>
+          </div>
+        </div>
+
+        <!-- TASK 2: VERB-NOUN MATCHING WITH DYNAMIC SVG CONNECTING LINES -->
+        <div id="extraTask2" style="display:none;">
+          <div class="step-header-box">
+            <div class="step-header-title">🔗 Task 2: Match Verbs with Noun Phrases</div>
+            <div class="step-header-desc">Match each verb on the left with its collocation partner on the right. <em>(1
+                item on the right is a distractor!)</em></div>
+          </div>
+
+          <div class="extra-match-wrapper" id="extraMatchWrapper2">
+            <svg class="match-svg-canvas" id="extraMatchSvg2">
+              <defs>
+                <linearGradient id="matchLineGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#E8A24A" />
+                  <stop offset="100%" stop-color="#CE8A33" />
+                </linearGradient>
+              </defs>
+            </svg>
+
+            <div class="match-grid-container">
+              <div class="match-col" id="extraVerbCol">
+                <div class="match-card-node" data-match="1" onclick="handleExtraVerbMatch('left', 1, this)"><span
+                    class="match-badge">1</span><span>try</span></div>
+                <div class="match-card-node" data-match="2" onclick="handleExtraVerbMatch('left', 2, this)"><span
+                    class="match-badge">2</span><span>sample</span></div>
+                <div class="match-card-node" data-match="3" onclick="handleExtraVerbMatch('left', 3, this)"><span
+                    class="match-badge">3</span><span>join</span></div>
+                <div class="match-card-node" data-match="4" onclick="handleExtraVerbMatch('left', 4, this)"><span
+                    class="match-badge">4</span><span>celebrate</span></div>
+              </div>
+
+              <div class="match-col" id="extraNounCol">
+                <div class="match-card-node" data-match="4" onclick="handleExtraVerbMatch('right', 4, this)"><span
+                    class="match-badge">a</span><span>cultural diversity</span></div>
+                <div class="match-card-node" data-match="1" onclick="handleExtraVerbMatch('right', 1, this)"><span
+                    class="match-badge">b</span><span>bamboo dancing</span></div>
+                <div class="match-card-node" data-match="99" onclick="handleExtraVerbMatch('right', 99, this)"><span
+                    class="match-badge">c</span><span>a strict deadline <em>(distractor)</em></span></div>
+                <div class="match-card-node" data-match="2" onclick="handleExtraVerbMatch('right', 2, this)"><span
+                    class="match-badge">d</span><span>the local cuisine</span></div>
+                <div class="match-card-node" data-match="3" onclick="handleExtraVerbMatch('right', 3, this)"><span
+                    class="match-badge">e</span><span>a tug of war team</span></div>
+              </div>
+            </div>
+          </div>
+          <div id="extraVerbFeedback"
+            style="font-size:15px;font-weight:800;color:var(--jade-text);display:none;margin-top:16px;">🎉 All 4
+            verb-noun collocations matched correctly!</div>
+
+          <div style="margin-top:24px;text-align:right;">
+            <button class="chip-btn" onclick="switchExtraTask(3)">✓ Next: Task 3 (Word-Pic Match) →</button>
+          </div>
+        </div>
+
+        <!-- TASK 3: WORD-PICTURE MATCHING (SLIDESHOW) -->
+        <div id="extraTask3" style="display:none;">
+          <div class="step-header-box">
+            <div class="step-header-title">🖼️ Task 3: Match Words with Illustrated Pictures</div>
+            <div class="step-header-desc">Look at the picture slide and click/tap the matching word from the options
+              below. Select <strong>"❌ Distractor"</strong> if the picture does not match any word.</div>
+          </div>
+
+          <div class="slideshow-wrapper"
+            style="max-width:640px; margin: 24px auto 0; background: var(--white); border: 2px solid var(--cream-2); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm);">
+            <div
+              style="display:flex; justify-content:space-between; align-items:center; border-bottom: 1.5px solid var(--cream-2); padding-bottom: 12px; margin-bottom: 16px;">
+              <span id="slideProgressLabel" style="font-size:14px; font-weight:800; color:var(--jade-dark);">Slide 1 /
+                6</span>
+              <span id="slideScoreLabel"
+                style="font-size:13.5px; font-weight:800; color:var(--accent-text); background: var(--accent-pale); padding: 4px 10px; border-radius: 6px;">Correct:
+                0 / 6</span>
+            </div>
+
+            <div class="slide-frame" style="text-align:center;">
+              <div class="slide-img-container"
+                style="position:relative; width:100%; height: 260px; border-radius: var(--radius-sm); overflow:hidden; border: 1.5px solid var(--cream-2); background: var(--cream); display:flex; align-items:center; justify-content:center;">
+                <img id="slideImg" src="photo/getready_unit2_g12_pic4.png" alt="Slide Scene"
+                  style="max-width:100%; max-height:100%; object-fit:contain;" onerror="imgFallback(this,'🖼️')">
+                <div id="slideBadge"
+                  style="position:absolute; inset:0; background:rgba(45,139,111,0.95); display:none; flex-direction:column; align-items:center; justify-content:center; color:#fff; font-size:18px; font-weight:800; border-radius: var(--radius-sm); transition:all 0.3s;">
+                  <span style="font-size:36px; margin-bottom:8px;">✓</span>
+                  <span id="slideBadgeText">Correct!</span>
+                </div>
+              </div>
+              <div id="slideDesc"
+                style="font-size:14.5px; font-weight:700; color:var(--ink-2); margin: 16px 0; min-height: 44px; line-height: 1.4;">
+                Dancers stepping and hopping rhythmically between clapping poles.</div>
+            </div>
+
+            <div style="margin-top:20px;">
+              <div
+                style="font-size:13px; font-weight:800; color:var(--ink-3); margin-bottom: 8px; text-transform:uppercase; letter-spacing:0.03em;">
+                Select the matching word:</div>
+              <div class="slide-options-grid">
+                <button class="slide-opt-btn" onclick="submitSlideAnswer('bamboo dancing')">bamboo dancing</button>
+                <button class="slide-opt-btn" onclick="submitSlideAnswer('diversity')">diversity</button>
+                <button class="slide-opt-btn" onclick="submitSlideAnswer('tug of war')">tug of war</button>
+                <button class="slide-opt-btn" onclick="submitSlideAnswer('cuisine')">cuisine</button>
+                <button class="slide-opt-btn distractor-btn" onclick="submitSlideAnswer('distractor')">❌ Distractor (No
+                  Match)</button>
+              </div>
+            </div>
+
+            <div style="margin-top:20px; display:flex; justify-content:space-between; align-items:center;">
+              <button class="chip-btn ghost" id="btnPrevSlide" onclick="prevSlide()" disabled
+                style="padding:8px 16px; font-size:13.5px;">← Prev</button>
+              <button class="chip-btn" id="btnNextSlide" onclick="nextSlide()" disabled
+                style="padding:8px 16px; font-size:13.5px;">Next →</button>
+            </div>
+
+            <div id="slideshowFeedback"
+              style="display:none; margin-top:20px; text-align:center; padding:12px; background:var(--jade-pale); border:1.5px solid var(--jade); border-radius:var(--radius-sm); color:var(--jade-text); font-weight:800; font-size:14px;">
+              🎉 Excellent! You correctly matched all illustrated scenes!</div>
+          </div>
+
+          <div style="margin-top:24px; text-align:right;">
+            <button class="chip-btn" id="btnToTask4" disabled onclick="switchExtraTask(4)">✓ Next: Task 4 (Article
+              Continuation) →</button>
+          </div>
+        </div>
+
+        <!-- TASK 4: CHOOSE CORRECT CONTINUATION (ARTICLES) -->
+        <div id="extraTask4" style="display:none;">
+          <div class="step-header-box">
+            <div class="step-header-title">📰 Task 4: Choose the Correct Continuation</div>
+            <div class="step-header-desc">Read the context sentence, then choose the continuation that uses articles
+              (a/an/the) correctly.</div>
+          </div>
+
+          <div class="continuation-card" id="contCard1">
+            <div class="continuation-context">Context: "Hà went to a cultural fair last weekend."</div>
+            <div class="continuation-opts">
+              <button class="continuation-opt-btn"
+                onclick="checkContinuation(this, false, 1, 'Incorrect. The fair was already introduced, so we should use \'the\', not \'a\', when referring back to it.', 'Sai rồi. \'The fair\' đã được nhắc trước đó, nên phải dùng \'the\' khi nhắc lại, không dùng \'a\'.')">A.
+                She loved <strong>a</strong> fair's food stalls.</button>
+              <button class="continuation-opt-btn"
+                onclick="checkContinuation(this, true, 1, 'Correct! Since the fair was already mentioned, we now refer back to it with \'the fair\'.', 'Chính xác! Vì \'the fair\' đã được nhắc đến trước đó, ta dùng \'the\' để nhắc lại.')">B.
+                She loved <strong>the</strong> fair's food stalls.</button>
+            </div>
+            <div class="continuation-exp" id="contExp1"></div>
+          </div>
+
+          <div class="continuation-card" id="contCard2">
+            <div class="continuation-context">Context: "At the fair, there was a massive tug of war line."</div>
+            <div class="continuation-opts">
+              <button class="continuation-opt-btn"
+                onclick="checkContinuation(this, true, 2, 'Correct! Because \'a tug of war line\' was already mentioned, we refer back to it with \'the line\'.', 'Chính xác! Vì \'a tug of war line\' đã được nhắc đến, ta dùng \'the line\' để nhắc lại.')">A.
+                <strong>The</strong> line stretched all the way around the park.</button>
+              <button class="continuation-opt-btn"
+                onclick="checkContinuation(this, false, 2, 'Incorrect. Since the line has already been introduced, use \'the\', not \'a\', to refer back to it.', 'Sai rồi. Vì cái hàng đã được nhắc trước, phải dùng \'the\' để nhắc lại, không dùng \'a\'.')">B.
+                <strong>A</strong> line stretched all the way around the park.</button>
+            </div>
+            <div class="continuation-exp" id="contExp2"></div>
+          </div>
+
+          <div class="continuation-card" id="contCard3">
+            <div class="continuation-context">Context: "Khoa wants to try Korean cuisine next time."</div>
+            <div class="continuation-opts">
+              <button class="continuation-opt-btn"
+                onclick="checkContinuation(this, false, 3, 'Incorrect. He is remembering a specific booth from last year, so it should be \'the cuisine booth\', not \'a cuisine booth\'.', 'Sai rồi. Anh đang nhớ lại một quầy cụ thể từ năm ngoái, nên phải dùng \'the cuisine booth\', không dùng \'a\'.')">A.
+                He remembers <strong>a</strong> cuisine booth from last year.</button>
+              <button class="continuation-opt-btn"
+                onclick="checkContinuation(this, true, 3, 'Correct! \'The cuisine booth\' refers to one specific booth he remembers from last year.', 'Chính xác! \'The cuisine booth\' chỉ một quầy cụ thể mà anh còn nhớ từ năm ngoái.')">B.
+                He remembers <strong>the</strong> cuisine booth from last year.</button>
+            </div>
+            <div class="continuation-exp" id="contExp3"></div>
+          </div>
+
+          <div id="contFeedback"
+            style="font-size:15px;font-weight:800;color:var(--jade-text);display:none;margin-top:8px;">🎉 Excellent! You
+            chose the correct article usage in all 3 items!</div>
+
+          <div style="margin-top:24px;text-align:right;">
+            <button class="chip-btn" onclick="switchExtraTask(5)">✓ Next: Task 5 (Photo Discussion) →</button>
+          </div>
+        </div>
+
+        <!-- TASK 5: PICTURE DISCUSSION -->
+        <div id="extraTask5" style="display:none;">
+          <div class="step-header-box">
+            <div class="step-header-title">🔍 Task 5: Festival Photo Discussion</div>
+            <div class="step-header-desc">Look at the festival scene, answer the factual question, then reflect on the 3
+              questions below.</div>
+          </div>
+
+          <div class="scene-hero-wrapper">
+            <div class="scene-hero-art">
+              <img src="photo/getready_unit2_g12_discussion.png" alt="International Cultural Festival Scene"
+                onerror="imgFallback(this,'🎊')">
+            </div>
+            <div class="scene-info-panel">
+              <h4>🎊 An outdoor international festival</h4>
+              <p>A lively park scene at an international cultural festival: two teams of teenagers gripping a thick
+                rope in a tug of war, a crowd cheering around them, food stalls with dishes from different countries
+                in the background, and colourful flags representing different cultures.</p>
+            </div>
+          </div>
+
+          <div class="mcq-card" id="sceneCard1">
+            <div class="mcq-q"><strong>1.</strong> What are the two teams doing in the picture?</div>
+            <div class="mcq-opts-grid">
+              <button class="mcq-opt"
+                onclick="checkSceneQ(this, false, 1, 'Incorrect. Look again — no one is dancing in this particular scene.', 'Sai rồi. Không có ai đang nhảy múa trong ảnh này.')">a)
+                Performing traditional bamboo dancing</button>
+              <button class="mcq-opt"
+                onclick="checkSceneQ(this, false, 1, 'Incorrect. There is no eating contest shown here.', 'Sai rồi. Không có cuộc thi ăn uống trong ảnh này.')">b)
+                Participating in an eating contest</button>
+              <button class="mcq-opt"
+                onclick="checkSceneQ(this, true, 1, 'Correct! Two teams are gripping a rope and pulling in a tug of war.', 'Chính xác! Hai đội đang nắm dây và kéo trong một trò kéo co.')">c)
+                Competing in a tug of war</button>
+              <button class="mcq-opt"
+                onclick="checkSceneQ(this, false, 1, 'Incorrect. No one is singing in this scene.', 'Sai rồi. Không có ai đang hát trong ảnh này.')">d)
+                Singing songs on public stage</button>
+            </div>
+          </div>
+
+          <div class="reflect-card">
+            <div class="reflect-q">💡 Reflection 1: Look at the crowd's expressions. What do you think they are feeling,
+              and why?</div>
+            <textarea class="reflect-textarea" id="reflect1" placeholder="Write your answer in English..."></textarea>
+            <button class="chip-btn reflect-save-btn" onclick="saveReflection(1)">Save my answer</button>
+            <div class="reflect-saved-fb" id="reflectFb1">✓ Saved — thanks for sharing your thoughts!</div>
+          </div>
+
+          <div class="reflect-card">
+            <div class="reflect-q">💡 Reflection 2: Why do you think games like tug of war are still popular at cultural
+              festivals today?</div>
+            <textarea class="reflect-textarea" id="reflect2" placeholder="Write your answer in English..."></textarea>
+            <button class="chip-btn reflect-save-btn" onclick="saveReflection(2)">Save my answer</button>
+            <div class="reflect-saved-fb" id="reflectFb2">✓ Saved — thanks for sharing your thoughts!</div>
+          </div>
+
+          <div class="reflect-card">
+            <div class="reflect-q">💡 Reflection 3: Has your school or town ever held a similar cultural event? What was
+              it like?</div>
+            <textarea class="reflect-textarea" id="reflect3" placeholder="Write your answer in English..."></textarea>
+            <button class="chip-btn reflect-save-btn" onclick="saveReflection(3)">Save my answer</button>
+            <div class="reflect-saved-fb" id="reflectFb3">✓ Saved — thanks for sharing your thoughts!</div>
+          </div>
+
+          <div style="margin-top:28px;text-align:right;">
+            <button class="chip-btn" onclick="unlockSelfEval()">✓ Finish Extra Practice &amp; Move to Self-Evaluation
+              →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: SELF-EVALUATION -->
+    <section class="block section-locked" id="sec-self-eval">
+      <div class="lock-overlay" id="lockSelfEval">
+        <div class="lock-badge">🔒 Complete Extra Practice above to unlock Self-Evaluation!</div>
+      </div>
+      <div>
+        <div class="section-eyebrow">📊 EVALUATION</div>
+        <h2>🏆 Self-Evaluation &amp; Check-out</h2>
+        <p style="font-size:15px;color:var(--ink-2);margin-bottom:20px;">Tick the learning objectives you feel confident
+          about after this lesson:</p>
+
+        <div class="eval-list">
+          <div class="eval-item" onclick="toggleEval(this)">
+            <div class="eval-check">✓</div>
+            <div class="eval-text">I can understand and use words related to cultural diversity (diversity, cuisine, tug
+              of war, bamboo dancing).</div>
+          </div>
+          <div class="eval-item" onclick="toggleEval(this)">
+            <div class="eval-check">✓</div>
+            <div class="eval-text">I can use articles (a/an/the) correctly to talk about cultural events.</div>
+          </div>
+        </div>
+
+        <button class="chip-btn" style="width:100%;justify-content:center;font-size:16px;padding:16px;"
+          onclick="completeLesson()">🎉 Complete Unit 2 Getting Started</button>
+
+        <div class="eval-result-card" id="evalResultCard" style="margin-top:24px;">
+          <h3 style="margin:0 0 10px;font-size:24px;">🏆 Congratulations!</h3>
+          <p style="font-size:16px;margin-bottom:16px;">You have successfully completed all learning milestones of Unit
+            2 Getting Started!</p>
+          <button class="accept-btn" onclick="scrollToSection('sec-post')">↺ Review Lesson from Start</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    function LMS() { return window.AiducationLMS || { ready: function () { }, progress: function () { }, event: function () { }, state: function () { }, complete: function () { }, resize: function () { } }; }
+
+    // ===== IMAGE FALLBACK (khi ảnh chưa được cấp/link hỏng — thay icon vỡ mặc định của trình duyệt) =====
+    function imgFallback(img, icon) {
+      const box = img.parentElement;
+      if (!box) return;
+      img.style.display = 'none';
+      if (box.querySelector('.img-fallback-placeholder')) return;
+      const ph = document.createElement('div');
+      ph.className = 'img-fallback-placeholder';
+      ph.innerHTML = `<span class="fb-icon">${icon}</span><span>Image coming soon</span>`;
+      box.appendChild(ph);
+    }
+    function clearImgFallback(img) {
+      img.style.display = '';
+      const ph = img.parentElement?.querySelector('.img-fallback-placeholder');
+      if (ph) ph.remove();
+    }
+
+    // ===== PROGRESS TRACKER ENGINE =====
+    const ptKeys = ['post', 'practice', 'extra-practice', 'selfeval'];
+    const ptDone = {};
+
+    function markDone(key) {
+      ptDone[key] = true;
+      const el = document.querySelector(`.pt-item[data-key="${key}"]`);
+      if (el) el.classList.add('done');
+      const count = Object.keys(ptDone).length;
+      const pct = Math.round((count / ptKeys.length) * 100);
+      document.getElementById('ptProgressBar').style.width = pct + '%';
+      document.getElementById('ptProgressLabel').textContent = pct + '% Completed';
+      document.getElementById('ptBtnPct').textContent = pct + '%';
+      LMS().progress({ done: count, total: ptKeys.length });
+    }
+
+    function toggleMobileDrawer() {
+      document.getElementById('progress-tracker').classList.toggle('open');
+      document.getElementById('pt-backdrop').classList.toggle('active');
+    }
+    function closeMobileDrawer() {
+      document.getElementById('progress-tracker').classList.remove('open');
+      document.getElementById('pt-backdrop').classList.remove('active');
+    }
+
+    // ===== TOUCH SWIPE GESTURES (Vuốt mép phải để mở, vuốt phải để đóng) =====
+    let ptTouchStartX = 0;
+    let ptTouchStartY = 0;
+
+    window.addEventListener('touchstart', (e) => {
+      ptTouchStartX = e.touches[0].clientX;
+      ptTouchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    window.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].clientX;
+      const touchEndY = e.changedTouches[0].clientY;
+      const dx = touchEndX - ptTouchStartX;
+      const dy = touchEndY - ptTouchStartY;
+
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 35) {
+        const isDrawerOpen = document.getElementById('progress-tracker').classList.contains('open');
+        // Swipe left from right edge (within 55px from edge) opens drawer
+        if (dx < -35 && ptTouchStartX > window.innerWidth - 55 && !isDrawerOpen) {
+          toggleMobileDrawer();
+        }
+        // Swipe right anywhere closes open drawer
+        else if (dx > 35 && isDrawerOpen) {
+          closeMobileDrawer();
+        }
+      }
+    }, { passive: true });
+
+    function navigateStep(id) { closeMobileDrawer(); scrollToSection(id); }
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function startLesson() {
+      document.getElementById('lockPost').style.display = 'none';
+      document.getElementById('sec-post').classList.remove('section-locked');
+      scrollToSection('sec-post');
+      LMS().ready();
+    }
+
+    // ===== PER-CHARACTER VOICE (Hà = female, Khoa = male) =====
+    let cachedVoices = [];
+    function refreshVoiceCache() { cachedVoices = speechSynthesis.getVoices(); }
+    if ('speechSynthesis' in window) {
+      refreshVoiceCache();
+      speechSynthesis.onvoiceschanged = refreshVoiceCache;
+    }
+    const FEMALE_VOICE_HINTS = ['female', 'zira', 'susan', 'samantha', 'victoria', 'karen', 'moira', 'tessa', 'fiona', 'kate', 'serena', 'joanna', 'salli', 'kimberly', 'ivy', 'amy', 'emma', 'aria', 'jenny', 'libby', 'sonia', 'hazel'];
+    const MALE_VOICE_HINTS = ['male', 'david', 'mark', 'james', 'daniel', 'george', 'guy', 'ryan', 'brian', 'matthew', 'justin', 'oliver', 'fred', 'alex', 'eric', 'christopher', 'thomas', 'liam'];
+
+    function pickVoiceForSpeaker(speaker) {
+      if (!cachedVoices.length) refreshVoiceCache();
+      if (!cachedVoices.length) return null;
+      const enVoices = cachedVoices.filter(v => v.lang && v.lang.toLowerCase().startsWith('en'));
+      const pool = enVoices.length ? enVoices : cachedVoices;
+      const hints = speaker === 'ha' ? FEMALE_VOICE_HINTS : MALE_VOICE_HINTS;
+      return pool.find(v => hints.some(h => v.name.toLowerCase().includes(h))) || null;
+    }
+
+    function stripEmojis(text) {
+      return text
+        .replace(/[\p{Extended_Pictographic}\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{1F1E0}-\u{1F1FF}\u{FE00}-\u{FE0F}]/gu, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    function expandAbbreviations(text) {
+      return text
+        .replace(/\bfr\b/gi, 'for real')
+        .replace(/\btbh\b/gi, 'to be honest')
+        .replace(/\blol\b/gi, '')
+        .replace(/\bbtw\b/gi, 'by the way')
+        .replace(/\bimo\b/gi, 'in my opinion')
+        .replace(/\bidk\b/gi, "I don't know")
+        .replace(/\bngl\b/gi, 'not gonna lie');
+    }
+
+    function cleanAudioText(text) {
+      return stripEmojis(expandAbbreviations(text));
+    }
+
+    function speakMsg(text, speaker) {
+      if (!('speechSynthesis' in window)) return;
+      speechSynthesis.cancel();
+      const cleanText = cleanAudioText(text);
+      const utterance = new SpeechSynthesisUtterance(cleanText);
+      utterance.lang = 'en-GB';
+      utterance.rate = 0.9;
+      const matchedVoice = pickVoiceForSpeaker(speaker);
+      if (matchedVoice) utterance.voice = matchedVoice;
+      utterance.pitch = speaker === 'ha' ? 1.3 : 0.8;
+      speechSynthesis.speak(utterance);
+    }
+
+    // ===== COMMENT THREAD ENGINE =====
+    const commentsData = [
+      { speaker: 'khoa', name: 'Khoa', text: "Haha no way, you actually did bamboo dancing?? I always chicken out and just watch." },
+      { speaker: 'ha', name: 'Hà', text: "You should've come! It wasn't that scary once I got the rhythm going." },
+      { speaker: 'khoa', name: 'Khoa', text: "I'm more of a food person, to be honest. Did they have the Korean cuisine booth again this year? Last year's kimchi was insane." },
+      { speaker: 'ha', name: 'Hà', text: "Yes! But honestly the tug of war line was still longer than the food line, everyone wanted to compete." },
+      { speaker: 'khoa', name: 'Khoa', text: "That's wild, I didn't expect that many people to care about a rope game. Also kind of jealous you got to try real tug of war — we don't really do that where I live." },
+      { speaker: 'ha', name: 'Hà', text: "You're missing out, for real! It's way more intense than it looks once there's an actual crowd cheering. I guess that's the thing about cultural diversity — everyone gets hyped about something different." }
+    ];
+
+    const targetWordPhrases = ['bamboo dancing', 'cuisine', 'tug of war', 'diversity'];
+
+    let currentCommentStep = 0;
+    let autoPlayActive = false;
+    const commentThread = document.getElementById('commentThread');
+
+    function createCommentRow(idx) {
+      const data = commentsData[idx - 1];
+      const row = document.createElement('div');
+      row.className = 'cm-turn';
+      row.id = 'cmTurn' + idx;
+
+      const avatar = `<div class="cm-avatar ${data.speaker}">${data.name[0]}</div>`;
+
+      const tokens = data.text.split(/(\s+)/);
+      const textContainer = document.createElement('span');
+      tokens.forEach(tok => {
+        if (!tok) return;
+        if (/^\s+$/.test(tok)) {
+          textContainer.appendChild(document.createTextNode(tok));
+        } else {
+          const span = document.createElement('span');
+          span.className = 'chat-word-span';
+          span.textContent = tok;
+          textContainer.appendChild(span);
+        }
+      });
+
+      // Highlight target words/phrases
+      targetWordPhrases.forEach(kw => {
+        const kwWords = kw.toLowerCase().split(' ');
+        const spans = Array.from(textContainer.querySelectorAll('.chat-word-span'));
+        for (let i = 0; i <= spans.length - kwWords.length; i++) {
+          const windowText = spans.slice(i, i + kwWords.length).map(s => s.textContent.toLowerCase().replace(/[^a-z']/g, '')).join(' ');
+          if (windowText === kw.toLowerCase()) {
+            for (let j = i; j < i + kwWords.length; j++) spans[j].classList.add('bold-colloc');
+          }
+        }
+      });
+
+      row.innerHTML = `${avatar}<div class="cm-bubble"><div class="cm-name">${data.name}</div><div class="cm-text"></div></div>`;
+      row.querySelector('.cm-text').appendChild(textContainer);
+      return row;
+    }
+
+    function showNextComment() {
+      if (currentCommentStep >= commentsData.length) return;
+      currentCommentStep++;
+      const row = createCommentRow(currentCommentStep);
+      commentThread.appendChild(row);
+      commentThread.scrollTop = commentThread.scrollHeight;
+      updateCommentFooter();
+      speakCommentTurn(commentsData[currentCommentStep - 1].text, commentsData[currentCommentStep - 1].speaker);
+    }
+
+    function speakCommentTurn(text, speaker) {
+      if (!('speechSynthesis' in window)) return;
+      speechSynthesis.cancel();
+      const cleanText = cleanAudioText(text);
+      const utterance = new SpeechSynthesisUtterance(cleanText);
+      utterance.lang = 'en-GB';
+      utterance.rate = 0.9;
+      const matchedVoice = pickVoiceForSpeaker(speaker);
+      if (matchedVoice) utterance.voice = matchedVoice;
+      utterance.pitch = speaker === 'ha' ? 1.3 : 0.8;
+
+      const words = Array.from(commentThread.lastElementChild.querySelectorAll('.chat-word-span'));
+      let wIdx = 0;
+      utterance.onboundary = function (event) {
+        if (event.name === 'word') {
+          words.forEach(w => w.classList.remove('highlighted-word'));
+          if (words[wIdx]) { words[wIdx].classList.add('highlighted-word'); wIdx++; }
+        }
+      };
+      utterance.onend = function () {
+        words.forEach(w => w.classList.remove('highlighted-word'));
+        if (autoPlayActive && currentCommentStep < commentsData.length) {
+          setTimeout(showNextComment, 800);
+        } else if (currentCommentStep === commentsData.length) {
+          autoPlayActive = false;
+        }
+      };
+      speechSynthesis.speak(utterance);
+    }
+
+    function revealAllComments() {
+      speechSynthesis.cancel();
+      autoPlayActive = false;
+      commentThread.innerHTML = '';
+      for (let i = 1; i <= commentsData.length; i++) commentThread.appendChild(createCommentRow(i));
+      currentCommentStep = commentsData.length;
+      commentThread.scrollTop = commentThread.scrollHeight;
+      updateCommentFooter();
+    }
+
+    function updateCommentFooter() {
+      document.getElementById('commentCounter').textContent = `${currentCommentStep} / ${commentsData.length}`;
+      document.getElementById('btnNextComment').disabled = currentCommentStep === commentsData.length;
+    }
+
+    // ===== VOCABULARY FLIP CARDS =====
+    const flippedSet = new Set();
+    function flipCard(card, id) {
+      card.classList.toggle('flipped');
+      if (!flippedSet.has(id)) {
+        flippedSet.add(id);
+        const total = parseInt(document.getElementById('vocabGrid').dataset.count);
+        document.getElementById('vocabStatus').textContent = `Flipped ${flippedSet.size} / ${total} cards`;
+        if (flippedSet.size === total) {
+          markDone('post');
+          document.getElementById('btnUnlockPractice').disabled = false;
+        }
+      }
+    }
+    function speakWord(word) {
+      if (!('speechSynthesis' in window)) return;
+      speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(word);
+      utterance.lang = 'en-GB';
+      utterance.rate = 0.85;
+      speechSynthesis.speak(utterance);
+    }
+
+    function unlockPracticeSection() {
+      document.getElementById('lockPractice').style.display = 'none';
+      document.getElementById('sec-practice').classList.remove('section-locked');
+      scrollToSection('sec-practice');
+    }
+
+    // ===== PRACTICE TABS =====
+    function switchPracticeTab(tab) {
+      document.getElementById('tabMatchBtn').classList.toggle('active', tab === 'match');
+      document.getElementById('tabTfBtn').classList.toggle('active', tab === 'tf');
+      document.getElementById('tabGramBtn').classList.toggle('active', tab === 'gram');
+      document.getElementById('tabMatch').style.display = (tab === 'match') ? 'block' : 'none';
+      document.getElementById('tabTf').style.display = (tab === 'tf') ? 'block' : 'none';
+      document.getElementById('tabGram').style.display = (tab === 'gram') ? 'block' : 'none';
+    }
+    function nextPracticeTab(tab) { switchPracticeTab(tab); scrollToSection('sec-practice'); }
+
+    function normalize(s) { return String(s).trim().toLowerCase(); }
+
+    // Tier 1: Matching
+    function checkMatch() {
+      let score = 0;
+      for (let i = 1; i <= 4; i++) {
+        const el = document.getElementById('match' + i);
+        el.classList.remove('correct', 'wrong');
+        if (el.value === el.dataset.ans) { el.classList.add('correct'); score++; }
+        else { el.classList.add('wrong'); }
+      }
+      const fb = document.getElementById('matchFb');
+      fb.style.display = 'block';
+      if (score === 4) {
+        fb.innerHTML = "<strong>🎉 Correct!</strong> All 4 words matched their definitions.";
+        fb.className = 'feedback success';
+      } else {
+        fb.innerHTML = `<strong>❌ ${score}/4 correct.</strong> Check the definitions again and try the rest.`;
+        fb.className = 'feedback';
+      }
+    }
+    function revealMatch() {
+      const answers = { match1: 'd4', match2: 'd1', match3: 'd2', match4: 'd3' };
+      Object.entries(answers).forEach(([id, ans]) => {
+        const el = document.getElementById(id);
+        el.value = ans;
+        el.classList.remove('wrong'); el.classList.add('correct');
+      });
+      const fb = document.getElementById('matchFb');
+      fb.style.display = 'block';
+      fb.innerHTML = "<strong>💡 Answers revealed:</strong> bamboo dancing → stepping between clapping poles; diversity → including many different types; cuisine → a style of cooking; tug of war → a rope-pulling contest.";
+      fb.className = 'feedback success';
+    }
+
+    // Tier 2: True/False
+    const tfAnswered = {};
+    function answerTF(qNum, choice) {
+      const grp = document.getElementById('tfGrp' + qNum);
+      const ans = grp.dataset.ans;
+      const btns = grp.querySelectorAll('.tf-btn');
+      btns.forEach(b => { b.classList.remove('chosen-correct', 'chosen-wrong'); b.disabled = true; });
+      const chosenBtn = choice === 'T' ? btns[0] : btns[1];
+      const isCorrect = choice === ans;
+      chosenBtn.classList.add(isCorrect ? 'chosen-correct' : 'chosen-wrong');
+      if (!isCorrect) {
+        const correctBtn = ans === 'T' ? btns[0] : btns[1];
+        correctBtn.classList.add('chosen-correct');
+      }
+      tfAnswered[qNum] = true;
+      if (Object.keys(tfAnswered).length === 5) {
+        const fb = document.getElementById('tfFb');
+        fb.style.display = 'block';
+        fb.innerHTML = "<strong>🎉 All 5 statements checked!</strong> Correct answers are highlighted in green.";
+        fb.className = 'feedback success';
+      }
+    }
+
+    // Tier 3: Grammar (Articles)
+    function checkGrammarBlanks() {
+      let score = 0;
+      for (let i = 1; i <= 4; i++) {
+        const el = document.getElementById('gram' + i);
+        el.classList.remove('correct', 'wrong');
+        if (normalize(el.value) === normalize(el.dataset.ans)) { el.classList.add('correct'); score++; }
+        else { el.classList.add('wrong'); }
+      }
+      const fb = document.getElementById('gramFb');
+      fb.style.display = 'block';
+      if (score === 4) {
+        fb.innerHTML = "<strong>🎉 Correct!</strong> Use 'a/an' for first mention, and 'the' when referring back to something already mentioned.";
+        fb.className = 'feedback success';
+        markDone('practice');
+      } else {
+        fb.innerHTML = `<strong>❌ ${score}/4 correct.</strong> Check whether the noun is being mentioned for the first time (a/an) or referred back to (the).`;
+        fb.className = 'feedback';
+      }
+    }
+    function revealGrammarBlanks() {
+      const answers = { gram1: 'the', gram2: 'a', gram3: 'the', gram4: 'an' };
+      Object.entries(answers).forEach(([id, ans]) => {
+        const el = document.getElementById(id);
+        el.value = ans;
+        el.classList.remove('wrong'); el.classList.add('correct');
+      });
+      const fb = document.getElementById('gramFb');
+      fb.style.display = 'block';
+      fb.innerHTML = "<strong>💡 Answers revealed:</strong> the, a, the, an.";
+      fb.className = 'feedback success';
+      markDone('practice');
+    }
+
+    function unlockExtraSection() {
+      document.getElementById('lockExtra').style.display = 'none';
+      document.getElementById('sec-extra-practice').classList.remove('section-locked');
+      scrollToSection('sec-extra-practice');
+      setTimeout(redrawMatchLines2, 100);
+    }
+
+    // ===== EXTRA PRACTICE ENGINE =====
+    function switchExtraTask(taskNum) {
+      for (let i = 1; i <= 5; i++) {
+        const btn = document.getElementById('tabExtra' + i + 'Btn');
+        const view = document.getElementById('extraTask' + i);
+        if (btn) btn.classList.toggle('active', i === taskNum);
+        if (view) view.style.display = (i === taskNum) ? 'block' : 'none';
+      }
+      if (taskNum === 2) setTimeout(redrawMatchLines2, 50);
+      if (taskNum === 3) updateSlideUI();
+    }
+
+    // Task 1: Collocation Meaning MCQ Flip Card
+    function checkExtraMCQ(btn, isCorrect, qId, expEn, expVi) {
+      const container = document.getElementById('extraMcqCard' + qId);
+      const backFace = document.getElementById('extraMcqBack' + qId);
+      const expEl = document.getElementById('extraMcqExp' + qId);
+      const parent = btn.parentElement;
+
+      parent.querySelectorAll('.mcq-opt').forEach(b => { b.style.pointerEvents = 'none'; b.classList.remove('correct', 'wrong'); });
+      btn.classList.add(isCorrect ? 'correct' : 'wrong');
+
+      if (expEl) {
+        expEl.innerHTML = `
+          <div style="font-size:18px;font-weight:900;margin-bottom:8px;color:${isCorrect ? 'var(--accent)' : 'var(--wrong)'};">${isCorrect ? '🎉 Great Job!' : "❌ Let's Review!"}</div>
+          <div style="font-size:14px;line-height:1.5;margin-bottom:6px;font-weight:700;">${expEn}</div>
+          <div style="font-size:12.5px;color:rgba(255,255,255,0.85);font-style:italic;line-height:1.45;">${expVi}</div>
+        `;
+      }
+      if (backFace) backFace.classList.toggle('wrong-result', !isCorrect);
+
+      setTimeout(() => {
+        if (container) container.classList.add('flipped');
+        parent.querySelectorAll('.mcq-opt').forEach(b => b.style.pointerEvents = 'auto');
+      }, 700);
+    }
+    function flipBackMCQ(qId) {
+      document.getElementById('extraMcqCard' + qId).classList.remove('flipped');
+    }
+
+    // Task 2: Verb-Noun Matching columns drawing paths
+    let selectedLeft2 = null, selectedRight2 = null, matchPairsCount2 = 0;
+    const extraMatchLines2 = [];
+
+    function drawMatchLine2(leftEl, rightEl) {
+      const svg = document.getElementById('extraMatchSvg2');
+      const wrapper = document.getElementById('extraMatchWrapper2');
+      if (!svg || !wrapper) return;
+      const wrapRect = wrapper.getBoundingClientRect();
+      const lRect = leftEl.getBoundingClientRect();
+      const rRect = rightEl.getBoundingClientRect();
+      const x1 = lRect.right - wrapRect.left;
+      const y1 = lRect.top + lRect.height / 2 - wrapRect.top;
+      const x2 = rRect.left - wrapRect.left;
+      const y2 = rRect.top + rRect.height / 2 - wrapRect.top;
+      const dx = Math.abs(x2 - x1) * 0.5;
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', `M ${x1} ${y1} C ${x1 + dx} ${y1}, ${x2 - dx} ${y2}, ${x2} ${y2}`);
+      path.setAttribute('class', 'match-conn-path');
+      path.setAttribute('stroke', 'url(#matchLineGrad2)');
+      svg.appendChild(path);
+      extraMatchLines2.push({ leftEl, rightEl, path });
+    }
+    function redrawMatchLines2() {
+      const wrapper = document.getElementById('extraMatchWrapper2');
+      if (!wrapper) return;
+      const wrapRect = wrapper.getBoundingClientRect();
+      extraMatchLines2.forEach(item => {
+        const lRect = item.leftEl.getBoundingClientRect();
+        const rRect = item.rightEl.getBoundingClientRect();
+        const x1 = lRect.right - wrapRect.left;
+        const y1 = lRect.top + lRect.height / 2 - wrapRect.top;
+        const x2 = rRect.left - wrapRect.left;
+        const y2 = rRect.top + rRect.height / 2 - wrapRect.top;
+        const dx = Math.abs(x2 - x1) * 0.5;
+        item.path.setAttribute('d', `M ${x1} ${y1} C ${x1 + dx} ${y1}, ${x2 - dx} ${y2}, ${x2} ${y2}`);
+      });
+    }
+    window.addEventListener('resize', () => redrawMatchLines2());
+
+    function handleExtraVerbMatch(side, val, el) {
+      if (el.classList.contains('paired')) return;
+      if (side === 'left') {
+        if (selectedLeft2) selectedLeft2.el.classList.remove('selected');
+        selectedLeft2 = { val, el }; el.classList.add('selected');
+      } else {
+        if (selectedRight2) selectedRight2.el.classList.remove('selected');
+        selectedRight2 = { val, el }; el.classList.add('selected');
+      }
+      if (selectedLeft2 && selectedRight2) {
+        if (selectedLeft2.val === selectedRight2.val) {
+          const l = selectedLeft2.el, r = selectedRight2.el;
+          l.classList.remove('selected'); r.classList.remove('selected');
+          l.classList.add('paired'); r.classList.add('paired');
+          drawMatchLine2(l, r);
+          matchPairsCount2++;
+          if (matchPairsCount2 === 4) document.getElementById('extraVerbFeedback').style.display = 'block';
+        } else {
+          const l = selectedLeft2.el, r = selectedRight2.el;
+          l.classList.add('wrong-shake'); r.classList.add('wrong-shake');
+          setTimeout(() => { l.classList.remove('selected', 'wrong-shake'); r.classList.remove('selected', 'wrong-shake'); }, 450);
+        }
+        selectedLeft2 = null; selectedRight2 = null;
+      }
+    }
+
+    // Task 3: Slideshow Word-Picture Matching
+    const slidesData = [
+      { id: 1, img: "photo/getready_unit2_g12_pic4.png", match: "bamboo dancing", desc: "Dancers stepping and hopping rhythmically between clapping poles." },
+      { id: 2, img: "photo/getready_unit2_g12_pic5.png", match: "distractor", desc: "A delicious birthday cake decorated with burning candles." },
+      { id: 3, img: "photo/getready_unit2_g12_pic2.png", match: "cuisine", desc: "A lively food stall showcasing distinctive regional dishes." },
+      { id: 4, img: "photo/getready_unit2_g12_pic1.png", match: "diversity", desc: "A cheerful crowd of students from various cultural backgrounds." },
+      { id: 5, img: "photo/getready_unit2_g12_pic6.png", match: "distractor", desc: "Two sports teams actively competing in a football match." },
+      { id: 6, img: "photo/getready_unit2_g12_pic3.png", match: "tug of war", desc: "Two teams pulling opposite ends of a thick rope on grass." }
+    ];
+    let currentSlideIndex = 0;
+    let slideAnswers = Array(6).fill(null);
+
+    function updateSlideUI() {
+      const slide = slidesData[currentSlideIndex];
+      const slideImgEl = document.getElementById('slideImg');
+      clearImgFallback(slideImgEl);
+      slideImgEl.src = slide.img;
+      document.getElementById('slideDesc').textContent = slide.desc;
+      document.getElementById('slideProgressLabel').textContent = `Slide ${currentSlideIndex + 1} / 6`;
+      const corrects = slideAnswers.filter(ans => ans === true).length;
+      document.getElementById('slideScoreLabel').textContent = `Correct: ${corrects} / 6`;
+      document.getElementById('btnPrevSlide').disabled = currentSlideIndex === 0;
+      document.getElementById('btnNextSlide').disabled = currentSlideIndex === 5 || slideAnswers[currentSlideIndex] !== true;
+
+      const optButtons = document.querySelectorAll('.slide-opt-btn');
+      optButtons.forEach(btn => {
+        btn.className = 'slide-opt-btn';
+        if (btn.classList.contains('distractor-btn')) btn.className = 'slide-opt-btn distractor-btn';
+        btn.disabled = false;
+      });
+
+      const badge = document.getElementById('slideBadge');
+      if (slideAnswers[currentSlideIndex] === true) {
+        badge.style.display = 'flex';
+        document.getElementById('slideBadgeText').textContent = "Matched!";
+        optButtons.forEach(btn => btn.disabled = true);
+      } else { badge.style.display = 'none'; }
+
+      if (corrects === 6) {
+        document.getElementById('slideshowFeedback').style.display = 'block';
+        document.getElementById('btnToTask4').disabled = false;
+      } else {
+        document.getElementById('slideshowFeedback').style.display = 'none';
+        document.getElementById('btnToTask4').disabled = true;
+      }
+    }
+
+    function submitSlideAnswer(selectedVal) {
+      const slide = slidesData[currentSlideIndex];
+      const isCorrect = selectedVal === slide.match;
+      const optButtons = document.querySelectorAll('.slide-opt-btn');
+      let clickedBtn = null;
+      optButtons.forEach(btn => {
+        const text = btn.textContent.trim().toLowerCase();
+        if (selectedVal === 'distractor' && text.includes('distractor')) clickedBtn = btn;
+        else if (text === selectedVal) clickedBtn = btn;
+      });
+
+      if (isCorrect) {
+        slideAnswers[currentSlideIndex] = true;
+        if (clickedBtn) clickedBtn.classList.add('chosen-correct');
+        const badge = document.getElementById('slideBadge');
+        badge.style.display = 'flex';
+        document.getElementById('slideBadgeText').textContent = "Correct!";
+        optButtons.forEach(btn => btn.disabled = true);
+        if (currentSlideIndex < 5) {
+          document.getElementById('btnNextSlide').disabled = false;
+          setTimeout(() => { if (slideAnswers[currentSlideIndex] === true && currentSlideIndex < 5) nextSlide(); }, 1200);
+        } else { updateSlideUI(); }
+      } else {
+        if (clickedBtn) { clickedBtn.classList.add('chosen-wrong'); setTimeout(() => clickedBtn.classList.remove('chosen-wrong'), 800); }
+      }
+    }
+    function nextSlide() { if (currentSlideIndex < 5) { currentSlideIndex++; updateSlideUI(); } }
+    function prevSlide() { if (currentSlideIndex > 0) { currentSlideIndex--; updateSlideUI(); } }
+
+    // Task 4: Choose Correct Continuation (Articles)
+    const continuationAnswered = {};
+    function checkContinuation(btn, isCorrect, itemNum, expEn, expVi) {
+      const card = document.getElementById('contCard' + itemNum);
+      const allBtns = card.querySelectorAll('.continuation-opt-btn');
+      allBtns.forEach(b => { b.disabled = true; });
+      btn.classList.add(isCorrect ? 'correct' : 'wrong');
+      if (!isCorrect) {
+        allBtns.forEach(b => { if (!b.classList.contains('wrong')) b.classList.add('correct'); });
+      }
+      const exp = document.getElementById('contExp' + itemNum);
+      exp.style.display = 'block';
+      exp.innerHTML = `<strong>${isCorrect ? '🎉 Correct!' : '❌ Not quite.'}</strong> ${expEn}<br><span style="font-style:italic;color:var(--ink-2);">${expVi}</span>`;
+      continuationAnswered[itemNum] = true;
+      if (Object.keys(continuationAnswered).length === 3) {
+        document.getElementById('contFeedback').style.display = 'block';
+      }
+    }
+
+    // Task 5: Picture Qs + Reflections
+    const sceneAnswers = {};
+    function checkSceneQ(btn, isCorrect, qNum, expTextEn, expTextVi) {
+      const card = document.getElementById('sceneCard' + qNum);
+      const allBtns = card.querySelectorAll('.mcq-opt');
+      allBtns.forEach(b => { b.classList.remove('correct', 'wrong'); b.style.pointerEvents = 'none'; });
+      if (isCorrect) {
+        btn.classList.add('correct');
+        sceneAnswers[qNum] = true;
+        let fb = card.querySelector('.scene-fb');
+        if (!fb) { fb = document.createElement('div'); fb.className = 'grid-exp-box scene-fb'; fb.style.display = 'block'; fb.style.marginTop = '12px'; fb.style.color = 'var(--jade-text)'; card.appendChild(fb); }
+        fb.innerHTML = `<strong>Correct!</strong> ${expTextEn}<br><span style="font-size:12.5px;color:var(--ink-2);font-style:italic;">${expTextVi}</span>`;
+      } else {
+        btn.classList.add('wrong');
+        setTimeout(() => { allBtns.forEach(b => b.style.pointerEvents = 'auto'); }, 1200);
+      }
+    }
+    function saveReflection(qNum) {
+      const fb = document.getElementById('reflectFb' + qNum);
+      if (fb) fb.style.display = 'block';
+    }
+
+    function unlockSelfEval() {
+      markDone('extra-practice');
+      document.getElementById('lockSelfEval').style.display = 'none';
+      document.getElementById('sec-self-eval').classList.remove('section-locked');
+      scrollToSection('sec-self-eval');
+    }
+
+    // ===== SELF-EVALUATION =====
+    function toggleEval(item) { item.classList.toggle('checked'); }
+    function completeLesson() {
+      document.querySelectorAll('.eval-item').forEach(it => it.classList.add('checked'));
+      document.getElementById('evalResultCard').classList.add('show');
+      markDone('selfeval');
+      scrollToSection('evalResultCard');
+      LMS().complete({ summary: 'Completed Unit 2 Getting Started — A Multicultural World', score: ptKeys.length, max: ptKeys.length, items: [] });
+    }
+
+    // ===== FRESH STATE ON PAGE LOAD / RESET =====
+    window.addEventListener('DOMContentLoaded', () => {
+      // Clear all inputs, selects, and textareas
+      document.querySelectorAll('input[type="text"]').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+        input.setAttribute('autocomplete', 'off');
+      });
+      document.querySelectorAll('select').forEach(sel => {
+        sel.selectedIndex = 0;
+        sel.classList.remove('correct', 'wrong');
+        sel.setAttribute('autocomplete', 'off');
+      });
+      document.querySelectorAll('textarea').forEach(ta => {
+        ta.value = '';
+        ta.setAttribute('autocomplete', 'off');
+      });
+      // Reset interactive buttons
+      document.querySelectorAll('.mcq-opt, .slide-opt-btn, .continuation-opt-btn, .tf-btn').forEach(btn => {
+        btn.classList.remove('correct', 'wrong', 'chosen-correct', 'chosen-wrong');
+        btn.disabled = false;
+        btn.style.pointerEvents = 'auto';
+      });
+      // Reset feedback boxes
+      document.querySelectorAll('.feedback, .continuation-exp, .scene-fb, .reflect-saved-fb, #extraVerbFeedback, #slideshowFeedback').forEach(fb => {
+        fb.style.display = 'none';
+      });
+      // Reset slideshow UI
+      updateSlideUI();
+    });
+  </script>
+
+</body>
+
+</html>
