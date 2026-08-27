@@ -80,6 +80,59 @@
       --candy: #E88AB0;
     }
 
+    /* ===== VOCAB FLASHCARDS COMPLETE POPUP ===== */
+    .vocab-done-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.62);
+      backdrop-filter: blur(4px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .vocab-done-backdrop.show {
+      display: flex;
+    }
+
+    .vocab-done-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 34px 28px;
+      max-width: 460px;
+      width: 100%;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      text-align: center;
+      animation: vocabDonePop .35s cubic-bezier(.2, .8, .3, 1);
+    }
+
+    @keyframes vocabDonePop {
+      0% { transform: scale(0.9); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .vocab-done-icon {
+      font-size: 34px;
+      margin-bottom: 10px;
+    }
+
+    .vocab-done-title {
+      font-size: 19px;
+      font-weight: 900;
+      color: var(--jade-dark);
+      margin: 0 0 12px;
+      line-height: 1.35;
+    }
+
+    .vocab-done-text {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: var(--ink-2);
+      margin-bottom: 20px;
+    }
+
     html {
       scroll-behavior: smooth;
       scroll-padding-top: 36px;
@@ -103,6 +156,7 @@
     }
 
     body {
+      zoom: 0.8;
       margin: 0;
       font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 17px;
@@ -125,216 +179,154 @@
       letter-spacing: -0.02em;
     }
 
-    /* ===== HERO HEADER ===== */
+    /* ===== HERO SECTION (02_design Mục 4.2) ===== */
     .hero {
       position: relative;
-      background: linear-gradient(145deg, #2D8B6F 0%, #14432F 100%);
-      color: #fff;
-      padding: 56px 20px 64px;
-      min-height: 52vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      background: var(--jade-deep);
       overflow: hidden;
-      border-bottom-left-radius: 32px 22px;
-      border-bottom-right-radius: 32px 22px;
-    }
-
-    .hero::before,
-    .hero::after {
-      content: '';
-      position: absolute;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 70%);
-      pointer-events: none;
-    }
-
-    .hero::before {
-      width: 260px;
-      height: 260px;
-      top: -90px;
-      left: -60px;
-    }
-
-    .hero::after {
-      width: 340px;
-      height: 340px;
-      bottom: -140px;
-      right: -90px;
-      background: radial-gradient(circle at 60% 40%, rgba(232, 162, 74, 0.22), rgba(232, 162, 74, 0) 70%);
-    }
-
-    .hero-doodles span {
-      position: absolute;
-      font-size: 26px;
-      opacity: 0.55;
-      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
-      animation: floaty 6s ease-in-out infinite;
-    }
-
-    .hero-doodles span:nth-child(1) {
-      top: 14%;
-      left: 8%;
-      font-size: 24px;
-      animation-delay: 0s;
-    }
-
-    .hero-doodles span:nth-child(2) {
-      top: 68%;
-      left: 12%;
-      font-size: 30px;
-      animation-delay: 1.2s;
-    }
-
-    .hero-doodles span:nth-child(3) {
-      top: 20%;
-      right: 9%;
-      font-size: 24px;
-      animation-delay: 0.6s;
-    }
-
-    .hero-doodles span:nth-child(4) {
-      top: 70%;
-      right: 13%;
-      font-size: 22px;
-      animation-delay: 1.8s;
-    }
-
-    .hero-doodles span:nth-child(5) {
-      top: 42%;
-      left: 4%;
-      font-size: 18px;
-      animation-delay: 2.4s;
-    }
-
-    .hero-doodles span:nth-child(6) {
-      top: 46%;
-      right: 5%;
-      font-size: 20px;
-      animation-delay: 3s;
-    }
-
-    @keyframes floaty {
-
-      0%,
-      100% {
-        transform: translateY(0) rotate(0deg);
-      }
-
-      50% {
-        transform: translateY(-14px) rotate(6deg);
-      }
-    }
-
-    @media (max-width: 640px) {
-      .hero-doodles span {
-        display: none;
-      }
+      padding: 64px 0 90px;
+      text-align: center;
+      margin-bottom: 40px;
     }
 
     .hero-inner {
-      max-width: 820px;
       position: relative;
       z-index: 2;
+      text-align: center;
+      color: #fff;
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 16px;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(255, 255, 255, 0.16);
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      padding: 6px 18px;
+      background: rgba(255, 255, 255, .14);
+      border: 1px solid rgba(255, 255, 255, .35);
+      padding: 6px 16px;
       border-radius: 999px;
-      font-size: 13.5px;
-      font-weight: 800;
+      font-size: 13px;
       text-transform: uppercase;
-      letter-spacing: .04em;
-      margin-bottom: 20px;
-      font-family: var(--font-fun);
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+      margin-bottom: 18px;
+      font-weight: 700;
+      color: #fff;
     }
 
-    .hero-obj-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-      margin-top: 32px;
+    .hero h1 {
+      color: #fff;
+      font-size: clamp(28px, 5vw, 46px);
+      line-height: 1.15;
+      margin: 0;
+      font-weight: 800;
+    }
+
+    .hero p.sub {
+      color: var(--sage);
+      font-size: 18px;
+      margin-top: 10px;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .characters {
+      display: flex;
+      justify-content: center;
+      gap: 26px;
+      margin-top: 34px;
+      flex-wrap: wrap;
+    }
+
+    .char-card {
+      background: rgba(255, 255, 255, .12);
+      border: 1px solid rgba(255, 255, 255, .3);
+      border-radius: 18px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
       text-align: left;
     }
 
-    .hero-obj-card {
-      background: var(--white);
-      color: var(--ink);
-      border-radius: var(--radius);
-      padding: 16px 18px;
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-      border: 2px solid transparent;
-      transition: transform .2s ease, border-color .2s ease;
+    .avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      flex-shrink: 0;
     }
 
-    .hero-obj-card:hover {
-      transform: translateY(-4px) rotate(-0.6deg);
-      border-color: var(--jade-soft);
+    .char-name {
+      font-weight: 700;
+      color: #fff;
+      font-size: 16px;
+    }
+
+    .char-role {
+      font-size: 12.5px;
+      color: var(--cream-2);
+    }
+
+    .objectives {
+      margin: 34px auto 0;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .obj-pill {
+      background: #fff;
+      color: var(--jade-dark);
+      border-radius: 14px;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      box-shadow: var(--shadow);
+      max-width: 280px;
+      text-align: left;
     }
 
     .obj-num {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--jade) 0%, var(--jade-deep) 100%);
+      background: var(--jade-deep);
       color: #fff;
-      font-weight: 900;
-      font-family: var(--font-fun);
-      font-size: 13.5px;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      flex: 0 0 auto;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
-      margin-top: 2px;
-      box-shadow: 0 3px 8px rgba(45, 139, 111, 0.35);
+      font-size: 12px;
+      font-weight: 700;
     }
 
-    .obj-content {
-      font-size: 13.5px;
-      line-height: 1.45;
-    }
-
-    .obj-title-en {
-      font-weight: 800;
-      color: var(--jade-dark);
-      margin-bottom: 3px;
-    }
-
-    .obj-title-sub {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--ink-3);
+    .start-btn-wrap {
+      margin-top: 32px;
     }
 
     .accept-btn {
-      background: linear-gradient(135deg, #E8A24A 0%, #CE8A33 100%);
-      color: #fff;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
+      color: #1A1A1A;
       border: none;
       border-radius: 999px;
-      padding: 16px 38px;
-      font-size: 18px;
+      padding: 14px 34px;
+      font-size: 16.5px;
       font-weight: 900;
-      font-family: var(--font-fun);
       cursor: pointer;
-      box-shadow: 0 8px 24px rgba(206, 138, 51, 0.45);
-      transition: transform .2s, box-shadow .2s;
-      min-height: 56px;
-      position: relative;
+      box-shadow: 0 6px 18px rgba(206, 138, 51, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .accept-btn:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 12px 28px rgba(206, 138, 51, 0.55);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 10px 24px rgba(206, 138, 51, 0.5);
     }
 
     /* ===== MAIN LAYOUT ===== */
@@ -1661,46 +1653,37 @@
     </div>
   </aside>
 
-  <!-- HERO HEADER -->
+  <!-- ===== HERO SECTION (02_design Mục 4.2) ===== -->
   <header class="hero" id="hero">
-    <div class="hero-doodles">
-      <span>🌏</span>
-      <span>🎎</span>
-      <span>🎉</span>
-      <span>🏮</span>
-      <span>✨</span>
-      <span>🥁</span>
-    </div>
-
     <div class="hero-inner">
-      <div class="eyebrow">✨ Unit 2 · Vocabulary (Grade 12)</div>
-      <h1 style="font-size: clamp(28px, 5.5vw, 42px); color:#fff; font-family:var(--font-fun); margin-bottom: 12px;">
-        A Multicultural World
-      </h1>
-      <p style="color: var(--sage); font-size: 17px; max-width: 640px; margin: 0 auto 24px; font-weight: 500;">
-        Explore cultural diversity, festive celebrations, and national identities through Khoa &amp; Hà's guided
-        festival tour and master 6 key target words.
-      </p>
-
-      <button class="accept-btn" onclick="scrollToSec('sec-mission')">Start Lesson ↓</button>
-
-      <div class="hero-obj-cards">
-        <div class="hero-obj-card">
+      <span class="eyebrow">✅ Unit 2 · Vocabulary</span>
+      <h1>A Multicultural World<br>Cultural Diversity &amp; Traditions</h1>
+      <p class="sub">Khám phá đa dạng văn hóa và lễ hội truyền thống qua 6 từ vựng trọng tâm cùng Khoa &amp; Hà</p>
+      <div class="objectives">
+        <div class="obj-pill">
           <span class="obj-num">1</span>
-          <div class="obj-content">
-            <div class="obj-title-en">Understand &amp; Use Key Vocabulary</div>
-            <div class="obj-title-sub">Learn 6 core words: identity, festivity, custom, costume, celebrate, traditional
-            </div>
+          <div>
+            <div style="font-weight:700;">Target Vocabulary</div>
+            <div style="font-size:12px; color:var(--ink-3); margin-top:2px;">6 core words: identity, festivity, custom, costume, celebrate, traditional</div>
           </div>
         </div>
-        <div class="hero-obj-card">
+        <div class="obj-pill">
           <span class="obj-num">2</span>
-          <div class="obj-content">
-            <div class="obj-title-en">Apply in Meaningful Contexts</div>
-            <div class="obj-title-sub">Complete 4 practice stations: Context Clues, Word Formation, Word Family
-              (IDENTITY), and Collocations</div>
+          <div>
+            <div style="font-weight:700;">4 Practice Stations</div>
+            <div style="font-size:12px; color:var(--ink-3); margin-top:2px;">Context Clues, Word Formation, Word Family, &amp; Collocations</div>
           </div>
         </div>
+        <div class="obj-pill">
+          <span class="obj-num">3</span>
+          <div>
+            <div style="font-weight:700;">Applied Testing</div>
+            <div style="font-size:12px; color:var(--ink-3); margin-top:2px;">Word Bank Cloze, 2-Layer Gap-fill, &amp; Error Fixing</div>
+          </div>
+        </div>
+      </div>
+      <div class="start-btn-wrap">
+        <button class="accept-btn" id="btnAccept" onclick="scrollToSec('sec-mission')">🚀 Start Lesson →</button>
       </div>
     </div>
   </header>
@@ -1793,11 +1776,9 @@
 
         <div class="warmup-feedback" id="warmupFb"></div>
 
-        <div style="margin-top: 20px;">
-          <button class="action-btn" id="btnWarmupNext" style="display:none;" onclick="nextWarmupRound()">Next Question
-            →</button>
-          <button class="action-btn" id="btnWarmupFinish" style="display:none;" onclick="finishWarmup()">Go to 1. Listen
-            &amp; Read →</button>
+        <div style="margin-top: 24px; display: flex; justify-content: center; gap: 12px;">
+          <button class="action-btn" id="btnWarmupNext" style="display:none; padding: 12px 28px; font-size: 15px; background: linear-gradient(135deg, var(--jade-dark), var(--jade-deep));" onclick="nextWarmupRound()">Next Question →</button>
+          <button class="action-btn" id="btnWarmupFinish" style="display:none; padding: 12px 28px; font-size: 15px; background: linear-gradient(135deg, #CE8A33, #E8A24A); color: #fff;" onclick="finishWarmup()">Go to 1. Listen &amp; Read →</button>
         </div>
       </div>
     </section>
@@ -1956,10 +1937,21 @@
       </div>
 
       <div style="text-align:center; margin-top:28px;">
-        <button class="chip-btn" id="btnFinishFlashcards" onclick="finishFlashcards()">✓ Finish Listen &amp; Read — Go
+      <div style="text-align:center; margin-top:28px;">
+        <button class="chip-btn" id="btnFinishFlashcards" onclick="handleFinishFlashcardsClick()">✓ Finish Listen &amp; Read — Go
           to Practice Stations →</button>
       </div>
     </section>
+
+    <!-- Flashcards Complete Popup -->
+    <div class="vocab-done-backdrop" id="vocabDoneBackdrop">
+      <div class="vocab-done-card">
+        <div class="vocab-done-icon" id="vocabDoneIcon">🎉</div>
+        <h3 class="vocab-done-title" id="vocabDoneTitle">Great job learning all 6 words!</h3>
+        <p class="vocab-done-text" id="vocabDoneText">Now let's see them all together in a short story — then you'll practice each one through 4 quick stations: guessing meaning from context, changing word forms, exploring word families, and learning natural word partners.</p>
+        <button class="chip-btn" id="vocabDoneBtn">✓ Continue to Practice Stations →</button>
+      </div>
+    </div>
 
     <!-- SECTION 2: PRACTICE (4 STATIONS) -->
     <section class="block" id="sec-practice-stations" style="display:none;">
@@ -2695,18 +2687,13 @@
       fb.className = isCorrect ? 'warmup-feedback correct-fb' : 'warmup-feedback wrong-fb';
       fb.innerHTML = `${isCorrect ? '✅ <b>Correct!</b> ' : '❌ <b>Incorrect!</b> '}${data.exp}`;
 
-      if (currentWarmupRound < warmupStatements.length - 1) {
-        document.getElementById('btnWarmupNext').style.display = 'inline-block';
-        // Auto-advance after 1.8 seconds so student has time to read explanation
-        warmupAutoTimeout = setTimeout(() => {
-          nextWarmupRound();
-        }, 1800);
-      } else {
-        document.getElementById('btnWarmupFinish').style.display = 'inline-block';
-        // Auto-advance to listen & read after 2.2 seconds on the last question
-        warmupAutoTimeout = setTimeout(() => {
-          finishWarmup();
-        }, 2200);
+      const isLast = currentWarmupRound >= warmupStatements.length - 1;
+      const nextBtn = document.getElementById(isLast ? 'btnWarmupFinish' : 'btnWarmupNext');
+      if (nextBtn) {
+        nextBtn.style.display = 'inline-flex';
+        requestAnimationFrame(() => {
+          nextBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
       }
     }
 
@@ -2735,6 +2722,34 @@
       card.classList.toggle('revealed');
       flippedSet.add(idx);
       document.getElementById('vocabCounter').textContent = `Flipped ${flippedSet.size}/6 cards (Flip to see IPA & example sentence)`;
+    }
+
+    function handleFinishFlashcardsClick() {
+      const total = 6;
+      const modal = document.getElementById('vocabDoneBackdrop');
+      const iconEl = document.getElementById('vocabDoneIcon');
+      const titleEl = document.getElementById('vocabDoneTitle');
+      const textEl = document.getElementById('vocabDoneText');
+      const btnEl = document.getElementById('vocabDoneBtn');
+      if (flippedSet.size === total) {
+        iconEl.textContent = '🎉';
+        titleEl.textContent = `Great job learning all ${total} words!`;
+        textEl.textContent = "Now let's see them all together in a short story — then you'll practice each one through 4 quick stations: guessing meaning from context, changing word forms, exploring word families, and learning natural word partners.";
+        btnEl.textContent = '✓ Continue to Practice Stations →';
+        btnEl.onclick = function () { closeVocabDoneModal(); finishFlashcards(); };
+      } else {
+        iconEl.textContent = '👀';
+        titleEl.textContent = 'A few cards left to flip!';
+        textEl.textContent = `You've flipped ${flippedSet.size}/${total} cards so far. Flip all ${total} cards to unlock the next stage.`;
+        btnEl.textContent = 'Got it, keep exploring';
+        btnEl.onclick = function () { closeVocabDoneModal(); };
+      }
+      if (modal) modal.classList.add('show');
+    }
+
+    function closeVocabDoneModal() {
+      const modal = document.getElementById('vocabDoneBackdrop');
+      if (modal) modal.classList.remove('show');
     }
 
     function finishFlashcards() {

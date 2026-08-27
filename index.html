@@ -84,6 +84,7 @@
         .seek-bar {
             flex-grow: 1;
             -webkit-appearance: none;
+            appearance: none;
             background: rgba(255, 255, 255, 0.3);
             height: 6px;
             border-radius: 3px;
@@ -236,12 +237,51 @@
         .lesson-transition {
             display: none;
             text-align: center;
-            margin-top: 30px;
-            animation: fadeIn 1s ease;
+            margin: 20px;
+            animation: fadeIn 0.8s ease;
+            max-width: 560px;
+            width: 90%;
+            background: var(--cream);
+            color: var(--ink);
+            padding: 40px 32px;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
         }
 
         .lesson-transition h2 {
-            color: var(--jade-deep);
+            color: var(--jade-dark);
+            font-size: 26px;
+            margin: 0 0 12px;
+        }
+
+        .lesson-transition p {
+            color: #514C44;
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 0 0 24px;
+        }
+
+        .go-getready-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--jade-deep), var(--jade-dark));
+            color: #fff;
+            text-decoration: none;
+            padding: 16px 36px;
+            font-size: 17px;
+            font-weight: 800;
+            border-radius: 999px;
+            box-shadow: 0 8px 24px rgba(45, 139, 111, 0.35);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .go-getready-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(45, 139, 111, 0.5);
+            background: linear-gradient(135deg, #18523a, var(--jade-dark));
         }
     </style>
 </head>
@@ -286,8 +326,12 @@
     </div>
 
     <div class="lesson-transition" id="lessonUI">
+        <div style="font-size: 52px; margin-bottom: 12px;">🌏</div>
         <h2>Welcome to Unit 2: A Multicultural World!</h2>
-        <p>Nội dung bài học chính sẽ được tự động mở ra ở đây...</p>
+        <p>Bạn đã hoàn thành phần khởi động video. Hãy cùng bước vào bài học Get Ready để khám phá các câu chuyện văn hóa thú vị!</p>
+        <a href="Unit2_GetReady_Grade12.html" class="go-getready-btn">
+            🚀 Bắt đầu bài học: Get Ready →
+        </a>
     </div>
 
     <script>

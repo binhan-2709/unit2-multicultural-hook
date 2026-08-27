@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -62,6 +62,7 @@
     }
 
     body {
+      zoom: 0.8;
       margin: 0;
       font-family: 'Plus Jakarta Sans', 'Be Vietnam Pro', -apple-system, sans-serif;
       font-size: 16.5px;
@@ -159,7 +160,7 @@
 
     /* ===== LAYOUT ===== */
     .main-container {
-      max-width: 900px;
+      max-width: 1080px;
       margin: 0 auto;
       padding: 40px 20px 100px;
     }
@@ -402,111 +403,154 @@
       text-decoration: line-through;
     }
 
-    /* Hero Header */
+    /* ===== HERO SECTION (02_design Mục 4.2) ===== */
     .hero {
-      background: linear-gradient(135deg, var(--jade-dark), #1c4e3a);
-      color: var(--white);
-      border-radius: var(--radius-lg);
-      padding: 50px 40px;
-      margin-bottom: 40px;
-      box-shadow: var(--shadow);
+      position: relative;
+      background: var(--jade-deep);
+      overflow: hidden;
+      padding: 64px 0 90px;
       text-align: center;
-      animation: popIn .6s cubic-bezier(.2, .8, .3, 1);
+      margin-bottom: 40px;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 16px;
     }
 
     .eyebrow {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, .14);
+      border: 1px solid rgba(255, 255, 255, .35);
       padding: 6px 16px;
       border-radius: 999px;
-      font-size: 12px;
-      font-weight: 800;
+      font-size: 13px;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 {
-      font-size: clamp(28px, 4vw, 42px);
-      margin: 0 0 16px;
-      font-weight: 900;
-      line-height: 1.2;
-    }
-
-    .hero .accent-line {
-      display: block;
-      color: var(--accent);
-      background: linear-gradient(135deg, var(--accent), #fcd34d);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero p.sub {
-      font-size: clamp(15px, 2vw, 17.5px);
-      color: rgba(255, 255, 255, 0.85);
-      max-width: 700px;
-      margin: 0 auto 30px;
-      font-weight: 500;
-    }
-
-    .hero-obj-cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px;
-      margin-bottom: 30px;
-    }
-
-    .hero-obj-card {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1.5px solid rgba(255, 255, 255, 0.15);
-      border-radius: var(--radius-sm);
-      padding: 14px 18px;
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      text-align: left;
-      flex: 0 1 320px;
-    }
-
-    .obj-num {
-      width: 24px;
-      height: 24px;
-      background: var(--accent);
-      color: var(--accent-text);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      font-weight: 900;
-      flex-shrink: 0;
-    }
-
-    .obj-title-en {
-      font-size: 13.5px;
+      margin-bottom: 18px;
       font-weight: 700;
       color: #fff;
     }
 
-    .accept-btn {
-      background: linear-gradient(135deg, var(--accent), var(--accent-deep));
-      color: var(--white);
-      border: none;
-      padding: 14px 34px;
-      border-radius: 999px;
+    .hero h1 {
+      color: #fff;
+      font-size: clamp(28px, 5vw, 46px);
+      line-height: 1.15;
+      margin: 0;
       font-weight: 800;
+    }
+
+    .hero p.sub {
+      color: var(--sage);
+      font-size: 18px;
+      margin-top: 10px;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .characters {
+      display: flex;
+      justify-content: center;
+      gap: 26px;
+      margin-top: 34px;
+      flex-wrap: wrap;
+    }
+
+    .char-card {
+      background: rgba(255, 255, 255, .12);
+      border: 1px solid rgba(255, 255, 255, .3);
+      border-radius: 18px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-align: left;
+    }
+
+    .avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .char-name {
+      font-weight: 700;
+      color: #fff;
+      font-size: 16px;
+    }
+
+    .char-role {
+      font-size: 12.5px;
+      color: var(--cream-2);
+    }
+
+    .objectives {
+      margin: 34px auto 0;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .obj-pill {
+      background: #fff;
+      color: var(--jade-dark);
+      border-radius: 14px;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      box-shadow: var(--shadow);
+      max-width: 280px;
+      text-align: left;
+    }
+
+    .obj-num {
+      background: var(--jade-deep);
+      color: #fff;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .start-btn-wrap {
+      margin-top: 32px;
+    }
+
+    .accept-btn {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
+      color: #1A1A1A;
+      border: none;
+      border-radius: 999px;
+      padding: 14px 34px;
       font-size: 16.5px;
-      box-shadow: 0 6px 20px rgba(232, 162, 74, 0.4);
-      transition: all .2s;
-      animation: pulse 2s infinite;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(206, 138, 51, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .accept-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(232, 162, 74, 0.5);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 10px 24px rgba(206, 138, 51, 0.5);
     }
 
     /* Blocks (Sections) & Locks */
@@ -1978,35 +2022,47 @@
     </div>
   </aside>
 
-  <!-- HERO SECTION -->
-  <header class="hero">
+  <!-- ===== HERO SECTION (02_design Mục 4.2) ===== -->
+  <header class="hero" id="hero">
     <div class="hero-inner">
-      <span class="eyebrow">🌍 UNIT 2 · GETTING STARTED</span>
-      <h1>
-        Getting Started
-        <span class="accent-line">A Multicultural World</span>
-      </h1>
-      <p class="sub">
-        Read Hà's social media post about an international festival and Khoa's comments underneath, learn 4 key
-        words about cultural diversity, and practise articles.
-      </p>
-
-      <div class="hero-obj-cards">
-        <div class="hero-obj-card">
-          <div class="obj-num">1</div>
-          <div class="obj-content">
-            <div class="obj-title-en">Get an overview of the unit's language and skills points</div>
+      <span class="eyebrow">✅ Unit 2 · Getting Started</span>
+      <h1>Getting Started<br>A Multicultural World</h1>
+      <p class="sub">Khám phá bài đăng lễ hội quốc tế của Hà &amp; bình luận của Khoa, làm chủ 4 từ vựng về đa dạng văn hóa và luyện tập mạo từ</p>
+      <div class="characters">
+        <div class="char-card">
+          <svg class="avatar" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="30" fill="#DCEAE1"/><circle cx="30" cy="24" r="11" fill="#2A8167"/><path d="M8 56c3-13 11-19 22-19s19 6 22 19z" fill="#14432F"/></svg>
+          <div>
+            <div class="char-name">Hà</div>
+            <div class="char-role">Festival Explorer</div>
           </div>
         </div>
-        <div class="hero-obj-card">
-          <div class="obj-num">2</div>
-          <div class="obj-content">
-            <div class="obj-title-en">Understand &amp; use words related to cultural diversity (diversity, cuisine,
-              tug of war, bamboo dancing)</div>
+        <div class="char-card">
+          <svg class="avatar" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="30" fill="#F7E7CD"/><circle cx="30" cy="24" r="11" fill="#E8A24A"/><path d="M8 56c3-13 11-19 22-19s19 6 22 19z" fill="#CE8A33"/></svg>
+          <div>
+            <div class="char-name">Khoa</div>
+            <div class="char-role">Classmate</div>
           </div>
         </div>
       </div>
-      <button class="accept-btn" onclick="startLesson()">🚀 Start learning →</button>
+      <div class="objectives">
+        <div class="obj-pill">
+          <span class="obj-num">1</span>
+          <div>
+            <div style="font-weight:700;">Unit Language &amp; Skills</div>
+            <div style="font-size:12px; color:var(--ink-3); margin-top:2px;">Get an overview of key language and skills points</div>
+          </div>
+        </div>
+        <div class="obj-pill">
+          <span class="obj-num">2</span>
+          <div>
+            <div style="font-weight:700;">Cultural Diversity</div>
+            <div style="font-size:12px; color:var(--ink-3); margin-top:2px;">Master diversity, cuisine, tug of war, bamboo dancing</div>
+          </div>
+        </div>
+      </div>
+      <div class="start-btn-wrap">
+        <button class="accept-btn" id="btnAccept" onclick="startLesson()">🚀 Start learning →</button>
+      </div>
     </div>
   </header>
 
